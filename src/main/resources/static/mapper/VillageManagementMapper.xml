@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.xpz.mapper.VillageManagementMapper">
+    <resultMap id="BaseResultMap" type="com.example.xpz.entity.VillageManagement">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+            <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+            <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+            <arg column="village_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+            <arg column="program_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+            <arg column="program_area" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="response_people" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="phone" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="carmera_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+            <arg column="is_delay" javaType="java.lang.Integer" jdbcType="INTEGER" />
+            <arg column="is_new" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        </constructor>
+    </resultMap>
+    <resultMap id="Countyujin" type="com.example.xpz.entity.Yujin">
+        <constructor>
+            <arg column="normal" javaType="java.lang.Integer" jdbcType="INTEGER" />
+            <arg column="warn" javaType="java.lang.Integer" jdbcType="INTEGER" />
+            <arg column="log" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        </constructor>
+    </resultMap>
+    <resultMap id="Countgaizao" type="com.example.xpz.entity.Gaizao">
+        <constructor>
+            <arg column="gaizao" javaType="java.lang.Integer" jdbcType="INTEGER" />
+            <arg column="xinzeng" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, create_time,update_time,village_id,program_id,program_area,response_people,phone,carmera_id,is_delay,is_new
+    </sql>
+    <select id="selectByVillageId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from village_management
+        where village_id = #{villageId,jdbcType=INTEGER}
+    </select>
+    <select id="selectByCount" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        is_delay
+        from village_management
+        where village_id = #{villageId,jdbcType=INTEGER}
+    </select>
+    <select id="CountyujinByVillageId" parameterType="java.lang.Integer" resultMap="Countyujin">
+        SELECT
+            SUM(is_delay = 0) AS normal,
+            SUM(is_delay = 1) AS warn,
+            SUM(is_delay = 2) AS log
+        FROM
+            village_management
+        WHERE
+            1 = 1
+        AND village_id = #{villageId,jdbcType=INTEGER};
+
+    </select>
+    <select id="CountGaizaoByVillageId" parameterType="java.lang.Integer" resultMap="Countgaizao">
+        SELECT
+            SUM(is_new = 0) AS gaizao,
+            SUM(is_new = 1) AS xinzeng
+        FROM
+            village_management
+        WHERE
+            1 = 1
+          AND village_id = #{villageId,jdbcType=INTEGER};
+
+    </select>
+
+</mapper>

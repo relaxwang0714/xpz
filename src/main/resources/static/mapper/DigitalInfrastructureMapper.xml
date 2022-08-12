@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.xpz.mapper.DigitalInfrastructureMapper">
+    <resultMap id="BaseResultMap" type="com.example.xpz.entity.DigitalInfrastructure">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+            <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+            <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+            <arg column="village_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+            <arg column="4g_cover" javaType="java.lang.Integer" jdbcType="INTEGER" />
+            <arg column="base_station" javaType="java.lang.Integer" jdbcType="INTEGER" />
+            <arg column="internet_rate" javaType="java.lang.Integer" jdbcType="INTEGER" />
+            <arg column="hundred_internet_rate" javaType="java.lang.Integer" jdbcType="INTEGER" />
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, create_time,update_time,village_id,4g_cover,base_station,internet_rate,hundred_internet_rate
+    </sql>
+    <select id="selectByVillageId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from digital_infrastructure
+        where village_id = #{villageId,jdbcType=INTEGER}
+    </select>
+
+
+</mapper>
