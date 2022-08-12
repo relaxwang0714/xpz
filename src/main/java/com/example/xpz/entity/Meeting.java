@@ -13,7 +13,7 @@ public class Meeting {
     private Date updateTime;
 
     private String picUrl;
-
+    @JSONField(format="yyyy-MM-dd HH:mm:ss+08:00")
     private Date meetingTime;
 
     private String meetingTitle;
