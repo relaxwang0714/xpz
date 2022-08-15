@@ -15,6 +15,7 @@ public class Tudiliuliuzhuan {
     private String weixinyuan;
     private String profile;
     private Integer villageId;
+    private String year;
 
     public Integer getId() {
         return id;
@@ -80,7 +81,15 @@ public class Tudiliuliuzhuan {
         this.villageId = villageId;
     }
 
-    public Tudiliuliuzhuan(Integer id, Date createTime, Date updateTime, String name, String phone, String weixinyuan, String profile, Integer villageId) {
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    public Tudiliuliuzhuan(Integer id, Date createTime, Date updateTime, String name, String phone, String weixinyuan, String profile, Integer villageId, String year) {
         this.id = id;
         this.createTime = createTime;
         this.updateTime = updateTime;
@@ -89,5 +98,6 @@ public class Tudiliuliuzhuan {
         this.weixinyuan = weixinyuan;
         this.profile = profile;
         this.villageId = villageId;
+        this.year = year;
     }
 }

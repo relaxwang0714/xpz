@@ -10,16 +10,18 @@
             <arg column="program_name" javaType="java.lang.String" jdbcType="VARCHAR" />
             <arg column="phone" javaType="java.lang.String" jdbcType="VARCHAR" />
             <arg column="village_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+            <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
         </constructor>
     </resultMap>
     <sql id="Base_Column_List">
-        id, create_time,update_time,chuangke_id,program_name,phone,village_id
+        p.id, p.create_time,p.update_time,p.chuangke_id,p.program_name,p.phone,p.village_id,k.name
     </sql>
     <select id="selectByVillageId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List" />
-        from  chuangye_program
-        where village_id = #{villageId,jdbcType=INTEGER}
+        from  chuangye_program p
+        RIGHT JOIN chuangke k ON p.chuangke_id=k.id
+        where p.village_id = #{villageId,jdbcType=INTEGER}
     </select>
 
 

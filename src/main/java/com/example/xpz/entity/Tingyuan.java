@@ -15,7 +15,7 @@ public class Tingyuan {
     private String phone;
     private Integer star;
     private String cameraUrl;
-    private Integer age;
+    private Date age;
     private String address;
     private Integer villageId;
 
@@ -75,11 +75,11 @@ public class Tingyuan {
         this.cameraUrl = cameraUrl;
     }
 
-    public Integer getAge() {
+    public Date getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(Date age) {
         this.age = age;
     }
 
@@ -99,7 +99,7 @@ public class Tingyuan {
         this.villageId = villageId;
     }
 
-    public Tingyuan(Integer id, Date createTime, Date updateTime, String huzhu, String phone, Integer star, String cameraUrl, Integer age, String address, Integer villageId) {
+    public Tingyuan(Integer id, Date createTime, Date updateTime, String huzhu, String phone, Integer star, String cameraUrl, Date age, String address, Integer villageId) {
         this.id = id;
         this.createTime = createTime;
         this.updateTime = updateTime;

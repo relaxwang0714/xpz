@@ -21,6 +21,8 @@ public class Park {
 
     private Integer villageId;
 
+    private String shiliang;
+
 
     public Integer getId() {
         return id;
@@ -86,7 +88,15 @@ public class Park {
         this.leave = leave;
     }
 
-    public Park(Integer id, Date createTime, Date upDateTime, String stopArea, String responsePeople, String phone, Integer leave, Integer villageId) {
+    public String getShiliang() {
+        return shiliang;
+    }
+
+    public void setShiliang(String shiliang) {
+        this.shiliang = shiliang;
+    }
+
+    public Park(Integer id, Date createTime, Date upDateTime, String stopArea, String responsePeople, String phone, Integer leave, Integer villageId, String shiliang) {
         this.id = id;
         this.createTime = createTime;
         this.upDateTime = upDateTime;
@@ -95,5 +105,6 @@ public class Park {
         this.phone = phone;
         this.leave = leave;
         this.villageId = villageId;
+        this.shiliang = shiliang;
     }
 }

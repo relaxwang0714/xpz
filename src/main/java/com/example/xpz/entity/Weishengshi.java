@@ -19,6 +19,8 @@ public class Weishengshi {
 
     private Integer villageId;
 
+    private String shiliang;
+
     public Integer getId() {
         return id;
     }
@@ -75,7 +77,15 @@ public class Weishengshi {
         this.villageId = villageId;
     }
 
-    public Weishengshi(Integer id, Date createTime, Date updateTime, String address, String responsePeople, String phone, Integer villageId) {
+    public String getShiliang() {
+        return shiliang;
+    }
+
+    public void setShiliang(String shiliang) {
+        this.shiliang = shiliang;
+    }
+
+    public Weishengshi(Integer id, Date createTime, Date updateTime, String address, String responsePeople, String phone, Integer villageId, String shiliang) {
         this.id = id;
         this.createTime = createTime;
         this.updateTime = updateTime;
@@ -83,5 +93,6 @@ public class Weishengshi {
         this.responsePeople = responsePeople;
         this.phone = phone;
         this.villageId = villageId;
+        this.shiliang = shiliang;
     }
 }

@@ -14,6 +14,7 @@ public class ChuangyeProgram {
     private String programName;
     private String phone;
     private Integer villageId;
+    private String name;
 
     public Integer getId() {
         return id;
@@ -71,7 +72,15 @@ public class ChuangyeProgram {
         this.villageId = villageId;
     }
 
-    public ChuangyeProgram(Integer id, Date createTime, Date updateTime, Integer chuangkeId, String programName, String phone, Integer villageId) {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public ChuangyeProgram(Integer id, Date createTime, Date updateTime, Integer chuangkeId, String programName, String phone, Integer villageId, String name) {
         this.id = id;
         this.createTime = createTime;
         this.updateTime = updateTime;
@@ -79,5 +88,6 @@ public class ChuangyeProgram {
         this.programName = programName;
         this.phone = phone;
         this.villageId = villageId;
+        this.name = name;
     }
 }

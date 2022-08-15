@@ -22,6 +22,8 @@ public class Express {
 
     private Integer villageId;
 
+    private String shiliang;
+
     public Integer getId() {
         return id;
     }
@@ -86,7 +88,15 @@ public class Express {
         this.villageId = villageId;
     }
 
-    public Express(Integer id, Date createTime, Date updateTime, String name, String responsePeople, String phone, String address, Integer villageId) {
+    public String getShiliang() {
+        return shiliang;
+    }
+
+    public void setShiliang(String shiliang) {
+        this.shiliang = shiliang;
+    }
+
+    public Express(Integer id, Date createTime, Date updateTime, String name, String responsePeople, String phone, String address, Integer villageId, String shiliang) {
         this.id = id;
         this.createTime = createTime;
         this.updateTime = updateTime;
@@ -95,5 +105,6 @@ public class Express {
         this.phone = phone;
         this.address = address;
         this.villageId = villageId;
+        this.shiliang = shiliang;
     }
 }
