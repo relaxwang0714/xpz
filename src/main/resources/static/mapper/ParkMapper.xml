@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.xpz.mapper.ParkMapper">
+    <resultMap id="BaseResultMap" type="com.example.xpz.entity.Park">
+        <constructor>
+            <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+            <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+            <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+            <arg column="stop_area" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="response_people" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="phone" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="lefts" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="village_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+
+        </constructor>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, create_time,update_time,stop_area,response_people,phone,lefts,village_id
+    </sql>
+    <select id="selectByVillageId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from park
+        where village_id = #{villageId,jdbcType=INTEGER}
+    </select>
+
+
+</mapper>
