@@ -6,9 +6,9 @@ import java.util.Date;
 
 public class Park {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss+08:00")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss+08:00")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date upDateTime;
 
     private String stopArea;
@@ -22,6 +22,10 @@ public class Park {
     private Integer villageId;
 
     private String shiliang;
+
+    private String parkName;
+
+    private Integer amount;
 
 
     public Integer getId() {
@@ -96,7 +100,23 @@ public class Park {
         this.shiliang = shiliang;
     }
 
-    public Park(Integer id, Date createTime, Date upDateTime, String stopArea, String responsePeople, String phone, Integer leave, Integer villageId, String shiliang) {
+    public String getParkName() {
+        return parkName;
+    }
+
+    public void setParkName(String parkName) {
+        this.parkName = parkName;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public Park(Integer id, Date createTime, Date upDateTime, String stopArea, String responsePeople, String phone, Integer leave, Integer villageId, String shiliang, String parkName, Integer amount) {
         this.id = id;
         this.createTime = createTime;
         this.upDateTime = upDateTime;
@@ -106,5 +126,7 @@ public class Park {
         this.leave = leave;
         this.villageId = villageId;
         this.shiliang = shiliang;
+        this.parkName = parkName;
+        this.amount = amount;
     }
 }

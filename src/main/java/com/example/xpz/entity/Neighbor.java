@@ -6,9 +6,9 @@ import java.util.Date;
 
 public class Neighbor {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss+08:00")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss+08:00")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date updatTime;
 
     private String picUrl;

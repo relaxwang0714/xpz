@@ -9,13 +9,15 @@
             <arg column="stop_area" javaType="java.lang.String" jdbcType="VARCHAR" />
             <arg column="response_people" javaType="java.lang.String" jdbcType="VARCHAR" />
             <arg column="phone" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="lefts" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="lefts" javaType="java.lang.Integer" jdbcType="INTEGER" />
             <arg column="village_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
             <arg column="shiliang" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+            <arg column="park_name" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="amount" javaType="java.lang.Integer" jdbcType="INTEGER" />
         </constructor>
     </resultMap>
     <sql id="Base_Column_List">
-        id, create_time,update_time,stop_area,response_people,phone,lefts,village_id,shiliang
+        id, create_time,update_time,stop_area,response_people,phone,lefts,village_id,shiliang,park_name,amount
     </sql>
     <select id="selectByVillageId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select

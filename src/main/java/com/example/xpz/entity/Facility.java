@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class Facility {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss+08:00")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     private Date updateTime;

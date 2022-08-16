@@ -6,9 +6,9 @@ import java.util.Date;
 
 public class Agriculture {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss+08:00")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss+08:00")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
     private String business;
@@ -18,6 +18,8 @@ public class Agriculture {
     private String phone;
 
     private Integer villageId;
+
+    private String picUrl;
 
     public Integer getId() {
         return id;
@@ -75,7 +77,15 @@ public class Agriculture {
         this.villageId = villageId;
     }
 
-    public Agriculture(Integer id, Date createTime, Date updateTime, String business, String dianzhu, String phone, Integer villageId) {
+    public String getPicUrl() {
+        return picUrl;
+    }
+
+    public void setPicUrl(String picUrl) {
+        this.picUrl = picUrl;
+    }
+
+    public Agriculture(Integer id, Date createTime, Date updateTime, String business, String dianzhu, String phone, Integer villageId, String picUrl) {
         this.id = id;
         this.createTime = createTime;
         this.updateTime = updateTime;
@@ -83,5 +93,6 @@ public class Agriculture {
         this.dianzhu = dianzhu;
         this.phone = phone;
         this.villageId = villageId;
+        this.picUrl = picUrl;
     }
 }

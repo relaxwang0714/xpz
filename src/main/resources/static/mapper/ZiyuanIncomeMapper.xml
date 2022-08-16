@@ -6,9 +6,9 @@
             <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
             <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
             <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-            <arg column="juming_income" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="fangchan_income" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="tudi_income" javaType="java.lang.Integer" jdbcType="INTEGER" />
+            <arg column="juming_income" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+            <arg column="fangchan_income" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+            <arg column="tudi_income" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
             <arg column="jidu" javaType="java.lang.Integer" jdbcType="INTEGER" />
             <arg column="village_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
         </constructor>

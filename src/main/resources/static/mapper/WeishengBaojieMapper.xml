@@ -7,14 +7,15 @@
             <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
             <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
             <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="is_luzhang" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="is_luzhang" javaType="java.lang.Integer" jdbcType="INTEGER" />
             <arg column="phone" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="traject" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="traject" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
             <arg column="village_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+            <arg column="mc" javaType="java.lang.String" jdbcType="VARCHAR" />
         </constructor>
     </resultMap>
     <sql id="Base_Column_List">
-        id, create_time,update_time,name,is_luzhang,phone,traject,village_id
+        id, create_time,update_time,name,is_luzhang,phone,traject,village_id,mc
     </sql>
     <select id="selectByVillageIdAndLuZhang" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select

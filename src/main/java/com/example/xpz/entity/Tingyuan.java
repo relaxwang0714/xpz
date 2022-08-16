@@ -7,9 +7,9 @@ import java.util.Date;
 
 public class Tingyuan {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss+08:00")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss+08:00")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
     private String huzhu;
     private String phone;
@@ -18,6 +18,10 @@ public class Tingyuan {
     private Date age;
     private String address;
     private Integer villageId;
+
+    private String shiliang;
+
+    private String hh;
 
     public Integer getId() {
         return id;
@@ -99,7 +103,23 @@ public class Tingyuan {
         this.villageId = villageId;
     }
 
-    public Tingyuan(Integer id, Date createTime, Date updateTime, String huzhu, String phone, Integer star, String cameraUrl, Date age, String address, Integer villageId) {
+    public String getShiliang() {
+        return shiliang;
+    }
+
+    public void setShiliang(String shiliang) {
+        this.shiliang = shiliang;
+    }
+
+    public String getHh() {
+        return hh;
+    }
+
+    public void setHh(String hh) {
+        this.hh = hh;
+    }
+
+    public Tingyuan(Integer id, Date createTime, Date updateTime, String huzhu, String phone, Integer star, String cameraUrl, Date age, String address, Integer villageId, String shiliang, String hh) {
         this.id = id;
         this.createTime = createTime;
         this.updateTime = updateTime;
@@ -110,5 +130,7 @@ public class Tingyuan {
         this.age = age;
         this.address = address;
         this.villageId = villageId;
+        this.shiliang = shiliang;
+        this.hh = hh;
     }
 }

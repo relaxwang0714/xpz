@@ -13,10 +13,12 @@
             <arg column="age" javaType="java.util.Date" jdbcType="TIMESTAMP" />
             <arg column="address" javaType="java.lang.String" jdbcType="VARCHAR" />
             <arg column="village_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+            <arg column="shiliang" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
+            <arg column="hh" javaType="java.lang.String" jdbcType="VARCHAR" />
         </constructor>
     </resultMap>
     <sql id="Base_Column_List">
-        id, create_time,update_time,huzhu,phone,star,camera_url,age,address,village_id
+        id, create_time,update_time,huzhu,phone,star,camera_url,age,address,village_id,shiliang,hh
     </sql>
     <select id="selectByVillageId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select

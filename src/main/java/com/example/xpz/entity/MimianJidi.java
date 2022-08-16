@@ -6,9 +6,9 @@ import java.util.Date;
 
 public class MimianJidi {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss+08:00")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss+08:00")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
     private String jidi;
@@ -20,6 +20,8 @@ public class MimianJidi {
     private String phone;
 
     private Integer villageId;
+
+    private String shiliang;
 
     public Integer getId() {
         return id;
@@ -85,7 +87,15 @@ public class MimianJidi {
         this.villageId = villageId;
     }
 
-    public MimianJidi(Integer id, Date createTime, Date updateTime, String jidi, Integer jidiId, String responsePeople, String phone, Integer villageId) {
+    public String getShiliang() {
+        return shiliang;
+    }
+
+    public void setShiliang(String shiliang) {
+        this.shiliang = shiliang;
+    }
+
+    public MimianJidi(Integer id, Date createTime, Date updateTime, String jidi, Integer jidiId, String responsePeople, String phone, Integer villageId, String shiliang) {
         this.id = id;
         this.createTime = createTime;
         this.updateTime = updateTime;
@@ -94,5 +104,6 @@ public class MimianJidi {
         this.responsePeople = responsePeople;
         this.phone = phone;
         this.villageId = villageId;
+        this.shiliang = shiliang;
     }
 }

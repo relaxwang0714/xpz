@@ -2,17 +2,18 @@ package com.example.xpz.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class LaodongliIncome {
         private Integer id;
-        @JSONField(format="yyyy-MM-dd HH:mm:ss+08:00")
+        @JSONField(format="yyyy-MM-dd HH:mm:ss")
         private Date createTime;
-        @JSONField(format="yyyy-MM-dd HH:mm:ss+08:00")
+        @JSONField(format="yyyy-MM-dd HH:mm:ss")
         private Date updateTime;
-        private Integer siyinIncome;
-        private Integer qiyeIncome;
-        private Integer nongcunIncome;
+        private BigDecimal siyinIncome;
+        private BigDecimal qiyeIncome;
+        private BigDecimal nongcunIncome;
         private Integer jidu;
         private Integer villageId;
 
@@ -40,27 +41,27 @@ public class LaodongliIncome {
                 this.updateTime = updateTime;
         }
 
-        public Integer getSiyinIncome() {
+        public BigDecimal getSiyinIncome() {
                 return siyinIncome;
         }
 
-        public void setSiyinIncome(Integer siyinIncome) {
+        public void setSiyinIncome(BigDecimal siyinIncome) {
                 this.siyinIncome = siyinIncome;
         }
 
-        public Integer getQiyeIncome() {
+        public BigDecimal getQiyeIncome() {
                 return qiyeIncome;
         }
 
-        public void setQiyeIncome(Integer qiyeIncome) {
+        public void setQiyeIncome(BigDecimal qiyeIncome) {
                 this.qiyeIncome = qiyeIncome;
         }
 
-        public Integer getNongcunIncome() {
+        public BigDecimal getNongcunIncome() {
                 return nongcunIncome;
         }
 
-        public void setNongcunIncome(Integer nongcunIncome) {
+        public void setNongcunIncome(BigDecimal nongcunIncome) {
                 this.nongcunIncome = nongcunIncome;
         }
 
@@ -80,7 +81,7 @@ public class LaodongliIncome {
                 this.villageId = villageId;
         }
 
-        public LaodongliIncome(Integer id, Date createTime, Date updateTime, Integer siyinIncome, Integer qiyeIncome, Integer nongcunIncome, Integer jidu, Integer villageId) {
+        public LaodongliIncome(Integer id, Date createTime, Date updateTime, BigDecimal siyinIncome, BigDecimal qiyeIncome, BigDecimal nongcunIncome, Integer jidu, Integer villageId) {
                 this.id = id;
                 this.createTime = createTime;
                 this.updateTime = updateTime;

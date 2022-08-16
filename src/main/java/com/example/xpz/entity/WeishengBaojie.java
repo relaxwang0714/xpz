@@ -6,15 +6,16 @@ import java.util.Date;
 
 public class WeishengBaojie {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss+08:00")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss+08:00")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
     private String name;
     private Integer is_luzhang;
     private String phone;
     private String traject;
     private Integer villageId;
+    private String mc;
 
     public Integer getId() {
         return id;
@@ -80,7 +81,15 @@ public class WeishengBaojie {
         this.villageId = villageId;
     }
 
-    public WeishengBaojie(Integer id, Date createTime, Date updateTime, String name, Integer is_luzhang, String phone, String traject, Integer villageId) {
+    public String getMc() {
+        return mc;
+    }
+
+    public void setMc(String mc) {
+        this.mc = mc;
+    }
+
+    public WeishengBaojie(Integer id, Date createTime, Date updateTime, String name, Integer is_luzhang, String phone, String traject, Integer villageId, String mc) {
         this.id = id;
         this.createTime = createTime;
         this.updateTime = updateTime;
@@ -89,5 +98,6 @@ public class WeishengBaojie {
         this.phone = phone;
         this.traject = traject;
         this.villageId = villageId;
+        this.mc = mc;
     }
 }

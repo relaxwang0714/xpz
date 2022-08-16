@@ -6,14 +6,14 @@ import java.util.Date;
 
 public class Weixinyuan {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss+08:00")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss+08:00")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
     private String name;
     private String phone;
     private String weixinyuan;
-    private String profile;
+    private String address;
     private Integer villageId;
 
     public Integer getId() {
@@ -65,11 +65,11 @@ public class Weixinyuan {
     }
 
     public String getProfile() {
-        return profile;
+        return address;
     }
 
-    public void setProfile(String profile) {
-        this.profile = profile;
+    public void setProfile(String address) {
+        this.address = address;
     }
 
     public Integer getVillageId() {
@@ -80,14 +80,14 @@ public class Weixinyuan {
         this.villageId = villageId;
     }
 
-    public Weixinyuan(Integer id, Date createTime, Date updateTime, String name, String phone, String weixinyuan, String profile, Integer villageId) {
+    public Weixinyuan(Integer id, Date createTime, Date updateTime, String name, String phone, String weixinyuan, String address, Integer villageId) {
         this.id = id;
         this.createTime = createTime;
         this.updateTime = updateTime;
         this.name = name;
         this.phone = phone;
         this.weixinyuan = weixinyuan;
-        this.profile = profile;
+        this.address = address;
         this.villageId = villageId;
     }
 }

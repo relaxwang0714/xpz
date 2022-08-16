@@ -6,8 +6,8 @@
             <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
             <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
             <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-            <arg column="tudi_liuzhuan" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="tudi_liuzhuan_rate" javaType="java.lang.Integer" jdbcType="INTEGER" />
+            <arg column="tudi_liuzhuan" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
+            <arg column="tudi_liuzhuan_rate" javaType="java.math.BigDecimal" jdbcType="DECIMAL" />
             <arg column="village_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
             <arg column="year" javaType="java.lang.String" jdbcType="VARCHAR" />
         </constructor>

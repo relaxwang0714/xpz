@@ -2,17 +2,18 @@ package com.example.xpz.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class ZiyuanShouru {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss+08:00")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss+08:00")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
-    private Integer jumingIncome;
-    private Integer fangchanIncome;
-    private Integer tudiIncome;
+    private BigDecimal jumingIncome;
+    private BigDecimal fangchanIncome;
+    private BigDecimal tudiIncome;
     private Integer jidu;
     private Integer villageId;
 
@@ -40,27 +41,27 @@ public class ZiyuanShouru {
         this.updateTime = updateTime;
     }
 
-    public Integer getJumingIncome() {
+    public BigDecimal getJumingIncome() {
         return jumingIncome;
     }
 
-    public void setJumingIncome(Integer jumingIncome) {
+    public void setJumingIncome(BigDecimal jumingIncome) {
         this.jumingIncome = jumingIncome;
     }
 
-    public Integer getFangchanIncome() {
+    public BigDecimal getFangchanIncome() {
         return fangchanIncome;
     }
 
-    public void setFangchanIncome(Integer fangchanIncome) {
+    public void setFangchanIncome(BigDecimal fangchanIncome) {
         this.fangchanIncome = fangchanIncome;
     }
 
-    public Integer getTudiIncome() {
+    public BigDecimal getTudiIncome() {
         return tudiIncome;
     }
 
-    public void setTudiIncome(Integer tudiIncome) {
+    public void setTudiIncome(BigDecimal tudiIncome) {
         this.tudiIncome = tudiIncome;
     }
 
@@ -80,7 +81,7 @@ public class ZiyuanShouru {
         this.villageId = villageId;
     }
 
-    public ZiyuanShouru(Integer id, Date createTime, Date updateTime, Integer jumingIncome, Integer fangchanIncome, Integer tudiIncome, Integer jidu, Integer villageId) {
+    public ZiyuanShouru(Integer id, Date createTime, Date updateTime, BigDecimal jumingIncome, BigDecimal fangchanIncome, BigDecimal tudiIncome, Integer jidu, Integer villageId) {
         this.id = id;
         this.createTime = createTime;
         this.updateTime = updateTime;
@@ -90,5 +91,4 @@ public class ZiyuanShouru {
         this.jidu = jidu;
         this.villageId = villageId;
     }
-
 }
