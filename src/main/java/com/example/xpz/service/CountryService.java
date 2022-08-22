@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.xpz.entity.*;
 import com.example.xpz.mapper.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,6 +33,14 @@ public class CountryService {
 
     @Autowired
     FeiyiMapper feiyiMapper;
+
+    @Autowired
+    FangwuMapper fangwuMapper;
+    @Autowired
+    CunmingMapper cunmingMapper;
+
+    @Autowired
+    DangyuanMapper dangyuanMapper;
 
     public String selectByPrimaryKey(int id){
         Country country= countryMapper.selectByPrimaryKey(id);
@@ -88,6 +97,39 @@ public class CountryService {
     public String selectFeiyiByVillageId(int id){
         List<feiyi> feiyiList = feiyiMapper.selectByVillageId(id);
         returnmsg.setData(feiyiList);
+        returnmsg.setCode("0");
+        returnmsg.setMsg("成功");
+//        JSONObject jsonObject = (JSONObject) JSONObject.toJSON(place);
+        return returnmsg.toString();
+    }
+    public String selectFangwuByVillageId(int id){
+        FangwuExample fangwuExample = new FangwuExample();
+        FangwuExample.Criteria criteria = fangwuExample.createCriteria();
+//        criteria
+        List<Fangwu> fangwuList = fangwuMapper.selectByExample(fangwuExample);
+        returnmsg.setData(fangwuList);
+        returnmsg.setCode("0");
+        returnmsg.setMsg("成功");
+//        JSONObject jsonObject = (JSONObject) JSONObject.toJSON(place);
+        return returnmsg.toString();
+    }
+    public String selectCunmingByHuhao(int id, Integer huhao){
+        CunmingExample cunmingExample = new CunmingExample();
+        CunmingExample.Criteria criteria = cunmingExample.createCriteria();
+        criteria.andHuhaoEqualTo(huhao);
+        List<Cunming> cunmingList = cunmingMapper.selectByExample(cunmingExample);
+        returnmsg.setData(cunmingList);
+        returnmsg.setCode("0");
+        returnmsg.setMsg("成功");
+//        JSONObject jsonObject = (JSONObject) JSONObject.toJSON(place);
+        return returnmsg.toString();
+    }
+    public String selectDangyuanByHuhao(int id, String huhao){
+        DangyuanExample dangyuanExample = new DangyuanExample();
+        DangyuanExample.Criteria criteria = dangyuanExample.createCriteria();
+        criteria.andHuhaoEqualTo(huhao);
+        List<Dangyuan> dangyuanList = dangyuanMapper.selectByExample(dangyuanExample);
+        returnmsg.setData(dangyuanList);
         returnmsg.setCode("0");
         returnmsg.setMsg("成功");
 //        JSONObject jsonObject = (JSONObject) JSONObject.toJSON(place);

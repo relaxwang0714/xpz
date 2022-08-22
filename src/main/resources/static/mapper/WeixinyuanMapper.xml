@@ -9,12 +9,12 @@
             <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
             <arg column="phone" javaType="java.lang.String" jdbcType="VARCHAR" />
             <arg column="weixinyuan" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="profile" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <arg column="address" javaType="java.lang.String" jdbcType="VARCHAR" />
             <arg column="village_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
         </constructor>
     </resultMap>
     <sql id="Base_Column_List">
-        id, create_time,update_time,name,phone,weixinyuan,profile,village_id
+        id, create_time,update_time,name,phone,weixinyuan,address,village_id
     </sql>
     <select id="selectByVillageId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select

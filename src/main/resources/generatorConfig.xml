@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 数据库驱动 -->
+    <context id="DB2tables" targetRuntime="MyBatis3" >
+
+        <!-- 去掉生成出来的代码的注解 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+            <property name="suppressDate" value="true" />
+        </commentGenerator>
+
+        <!--       数据库链接URL，用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://172.16.10.166:3306/cailu2?useSSL=false&amp;serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=UTF-8"
+                        userId="root"
+                        password="123456">
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+        <!--        类型解析-->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- 生成模型的包名和位置 这里写你要把生成的po类放到哪个包下面 -->
+        <javaModelGenerator targetPackage="com.example.xpz.entity"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <!--从数据库返回的值去除前后空格-->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+
+
+        <!-- 生成映射文件的包名和位置  这里写你要把生成的xml文件放到哪个目录下面-->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="src/main/resources/static/mapper">
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <!-- 生成DAO的包名和位置 这里写你要把生成的dao也就是mapper文件放到哪个包下面 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.example.xpz.mapper"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+<!--        <table tableName="cunming" domainObjectName="Cunming"/>-->
+        <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名 -->
+<!--        <table tableName="fangwu" domainObjectName="Fangwu"/>-->
+<!--            <table tableName="laonian_xiehui" domainObjectName="LaonianXiehui"/>-->
+<!--            <table tableName="funv_xiehui" domainObjectName="FunvXiehui"/>-->
+            <table tableName="dangyuan" domainObjectName="Dangyuan"/>
+<!--            <table tableName="lianxihu" domainObjectName="Lianxihu"/>-->
+<!--        <table tableName="people_structure" domainObjectName="PeopleStructure"/>-->
+<!--        <table tableName="overview" domainObjectName="Overview"/>-->
+<!--        <table tableName="caomao_fengcai" domainObjectName="CaomaoFengcai"/>-->
+<!--        <table tableName="country_overview" domainObjectName="CountryOverview"/>-->
+<!--        <table tableName="jingji_zengshou" domainObjectName="JingjiZengshou"/>-->
+<!--        <table tableName="ruoshi_qunti" domainObjectName="RuoshiQunti"/>-->
+<!--        <table tableName="bangfu_huodong" domainObjectName="BangfuHuodong"/>-->
+<!--        <table tableName="caomao_yishi" domainObjectName="CaomaoYishi"/>-->
+<!--        <table tableName="chuzufang" domainObjectName="Chuzufang"/>-->
+<!--        <table tableName="college" domainObjectName="College"/>-->
+<!--        <table tableName="cunming_jifen" domainObjectName="cunmingJifen"/>-->
+<!--        <table tableName="dangjian_zhendi" domainObjectName="DangjianZhendi"/>-->
+<!--        <table tableName="dangyuan_activity" domainObjectName="DangyuanHuodong"/>-->
+<!--        <table tableName="dianpu" domainObjectName="Dianpu"/>-->
+<!--        <table tableName="fengmao_guankong" domainObjectName="FengmaoGuankong"/>-->
+<!--        <table tableName="gongyi_guanggao" domainObjectName="GongyiGuanggao"/>-->
+<!--        <table tableName="gongyi_huodong" domainObjectName="GongyiHuodong"/>-->
+<!--        <table tableName="gongyi_zuzhi" domainObjectName="GongyiZuzhi"/>-->
+<!--        <table tableName="jiancha_lianluozhan" domainObjectName="JianchaLianluozhan"/>-->
+<!--        <table tableName="jiti_fangchan" domainObjectName="JitiFangchan"/>-->
+<!--        <table tableName="lingli_youyue" domainObjectName="LingliYouyue"/>-->
+<!--        <table tableName="lingli_zhongxin" domainObjectName="LingliZhongxin"/>-->
+<!--        <table tableName="puhui_jinrong" domainObjectName="PuhuiJinrong"/>-->
+<!--        <table tableName="ruoshi_qunti" domainObjectName="RuoshiQunti"/>-->
+<!--        <table tableName="shijian_tongban" domainObjectName="ShijianTongban"/>-->
+<!--        <table tableName="tudi_liuzhuan" domainObjectName="TudiLiuzhuan"/>-->
+<!--        <table tableName="wangge_xinxi" domainObjectName="WanggeXinxi"/>-->
+<!--        <table tableName="xiangmu_gongkai" domainObjectName="XiangmuGongkai"/>-->
+<!--        <table tableName="xiangmu_yusuan" domainObjectName="XiangmuYusuan"/>-->
+<!--        <table tableName="xiangtu_minsu" domainObjectName="XiangtuMinsu"/>-->
+<!--        <table tableName="xingang_fengcai" domainObjectName="XingangFengcai"/>-->
+<!--        <table tableName="yetai_fenbu" domainObjectName="YetaiFenbu"/>-->
+<!--        <table tableName="yunyou_xingang" domainObjectName="YunyouXingang"/>-->
+<!--        <table tableName="zaijian_list" domainObjectName="ZaijianList"/>-->
+<!--        <table tableName="zhihui_dangjian" domainObjectName="ZhihuiDangjian"/>-->
+<!--        <table tableName="zuimei_xilie" domainObjectName="ZuimeiXilie"/>-->
+
+
+    </context>
+</generatorConfiguration>

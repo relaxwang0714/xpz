@@ -36,8 +36,8 @@ public class DigitalGovernService {
         returnMsg.setMsg("success");
         return returnMsg.toString();
     }
-    public String selectWeishengBaojieByVillageId(int id){
-        List<WeishengBaojie> weishengBaojieList = weishengBaojieMapper.selectByVillageIdAndLuZhang(id,1);
+    public String selectWeishengBaojieByVillageId(int id,Integer isLuzhang){
+        List<WeishengBaojie> weishengBaojieList = weishengBaojieMapper.selectByVillageIdAndLuZhang(id,isLuzhang);
         returnMsg.setData(weishengBaojieList);
         returnMsg.setCode("0");
         returnMsg.setMsg("success");
