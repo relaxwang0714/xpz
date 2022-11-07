@@ -66,4 +66,5 @@ public class DigitalIndustryService {
         returnMsg.setMsg("success");
         return returnMsg.toString();
     }
+
 }

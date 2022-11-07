@@ -56,4 +56,5 @@ public class PartyService {
         returnmsg.setMsg("成功");
         return returnmsg.toString();
     }
+
 }

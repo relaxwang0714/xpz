@@ -46,19 +46,12 @@ public class CountryService {
         Country country= countryMapper.selectByPrimaryKey(id);
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("profile",country.getProfile());
-//        returnmsg.setData(country.getProfile());
-//        returnmsg.setCode("0");
-//        returnmsg.setMsg("成功");
         return jsonObject.toString();
     }
+
     public String selectPeopleStructureByVillageId(int id){
         PeopleStructure peopleStructure= peopleStructureMapper.selectByVillageId(id);
-//        JSONObject jsonObject = new JSONObject();
         JSONObject jsonObject = (JSONObject) JSONObject.toJSON(peopleStructure);
-//        jsonObject.put("profile",country.getProfile());
-//        returnmsg.setData(country.getProfile());
-//        returnmsg.setCode("0");
-//        returnmsg.setMsg("成功");
         return jsonObject.toString();
     }
     public String selectDigitalByVillageId(int id){
@@ -72,7 +65,6 @@ public class CountryService {
         returnmsg.setData(placeList);
         returnmsg.setCode("0");
         returnmsg.setMsg("成功");
-//        JSONObject jsonObject = (JSONObject) JSONObject.toJSON(place);
         return returnmsg.toString();
     }
 
@@ -81,7 +73,6 @@ public class CountryService {
         returnmsg.setData(placeList);
         returnmsg.setCode("0");
         returnmsg.setMsg("成功");
-//        JSONObject jsonObject = (JSONObject) JSONObject.toJSON(place);
         return returnmsg.toString();
     }
 
@@ -90,7 +81,6 @@ public class CountryService {
         returnmsg.setData(trashList);
         returnmsg.setCode("0");
         returnmsg.setMsg("成功");
-//        JSONObject jsonObject = (JSONObject) JSONObject.toJSON(place);
         return returnmsg.toString();
     }
 
@@ -99,7 +89,6 @@ public class CountryService {
         returnmsg.setData(feiyiList);
         returnmsg.setCode("0");
         returnmsg.setMsg("成功");
-//        JSONObject jsonObject = (JSONObject) JSONObject.toJSON(place);
         return returnmsg.toString();
     }
     public String selectFangwuByVillageId(int id){
@@ -110,7 +99,6 @@ public class CountryService {
         returnmsg.setData(fangwuList);
         returnmsg.setCode("0");
         returnmsg.setMsg("成功");
-//        JSONObject jsonObject = (JSONObject) JSONObject.toJSON(place);
         return returnmsg.toString();
     }
     public String selectCunmingByHuhao(int id, Integer huhao){
@@ -121,7 +109,6 @@ public class CountryService {
         returnmsg.setData(cunmingList);
         returnmsg.setCode("0");
         returnmsg.setMsg("成功");
-//        JSONObject jsonObject = (JSONObject) JSONObject.toJSON(place);
         return returnmsg.toString();
     }
     public String selectDangyuanByHuhao(int id, String huhao){
@@ -132,7 +119,6 @@ public class CountryService {
         returnmsg.setData(dangyuanList);
         returnmsg.setCode("0");
         returnmsg.setMsg("成功");
-//        JSONObject jsonObject = (JSONObject) JSONObject.toJSON(place);
         return returnmsg.toString();
     }
 }

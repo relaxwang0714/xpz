@@ -66,11 +66,5 @@ public class ManagementService {
         JSONObject jsonObject = (JSONObject) JSONObject.toJSON(gaizao);
         return jsonObject.toString();
     }
-//    public String selectDesignByByVillageId(int id){
-//        List<Design> designList = desiginMapper.selectByVillageId(id);
-//        returnMsg.setData(designList);
-//        returnMsg.setCode("0");
-//        returnMsg.setMsg("success");
-//        return returnMsg.toString();
-//    }
+
 }
