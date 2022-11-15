@@ -1,29 +1,323 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.xpz.mapper.WeishengBaojieMapper">
-    <resultMap id="BaseResultMap" type="com.example.xpz.entity.WeishengBaojie">
-        <constructor>
-            <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-            <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-            <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="is_luzhang" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="phone" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="traject" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
-            <arg column="village_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="mc" javaType="java.lang.String" jdbcType="VARCHAR" />
-        </constructor>
-    </resultMap>
-    <sql id="Base_Column_List">
-        id, create_time,update_time,name,is_luzhang,phone,traject,village_id,mc
-    </sql>
-    <select id="selectByVillageIdAndLuZhang" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List" />
-        from weisheng_baojie
-        where village_id = #{villageId,jdbcType=INTEGER}
-        AND is_luzhang = #{isLuZhang,jdbcType=INTEGER}
-    </select>
-
-
+  <resultMap id="BaseResultMap" type="com.example.xpz.entity.WeishengBaojie">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="is_luzhang" jdbcType="INTEGER" property="isLuzhang" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="village_id" jdbcType="INTEGER" property="villageId" />
+    <result column="mc" jdbcType="VARCHAR" property="mc" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.xpz.entity.WeishengBaojie">
+    <result column="traject" jdbcType="LONGVARCHAR" property="traject" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, create_time, update_time, name, is_luzhang, phone, village_id, mc
+  </sql>
+  <sql id="Blob_Column_List">
+    traject
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.example.xpz.entity.WeishengBaojieExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from weisheng_baojie
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.example.xpz.entity.WeishengBaojieExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from weisheng_baojie
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from weisheng_baojie
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from weisheng_baojie
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.xpz.entity.WeishengBaojieExample">
+    delete from weisheng_baojie
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.xpz.entity.WeishengBaojie">
+    insert into weisheng_baojie (id, create_time, update_time, 
+      name, is_luzhang, phone, 
+      village_id, mc, traject
+      )
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{name,jdbcType=VARCHAR}, #{isLuzhang,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, 
+      #{villageId,jdbcType=INTEGER}, #{mc,jdbcType=VARCHAR}, #{traject,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.xpz.entity.WeishengBaojie">
+    insert into weisheng_baojie
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="isLuzhang != null">
+        is_luzhang,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="villageId != null">
+        village_id,
+      </if>
+      <if test="mc != null">
+        mc,
+      </if>
+      <if test="traject != null">
+        traject,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="isLuzhang != null">
+        #{isLuzhang,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="villageId != null">
+        #{villageId,jdbcType=INTEGER},
+      </if>
+      <if test="mc != null">
+        #{mc,jdbcType=VARCHAR},
+      </if>
+      <if test="traject != null">
+        #{traject,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.xpz.entity.WeishengBaojieExample" resultType="java.lang.Long">
+    select count(*) from weisheng_baojie
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update weisheng_baojie
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isLuzhang != null">
+        is_luzhang = #{record.isLuzhang,jdbcType=INTEGER},
+      </if>
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.villageId != null">
+        village_id = #{record.villageId,jdbcType=INTEGER},
+      </if>
+      <if test="record.mc != null">
+        mc = #{record.mc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.traject != null">
+        traject = #{record.traject,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update weisheng_baojie
+    set id = #{record.id,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      name = #{record.name,jdbcType=VARCHAR},
+      is_luzhang = #{record.isLuzhang,jdbcType=INTEGER},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      village_id = #{record.villageId,jdbcType=INTEGER},
+      mc = #{record.mc,jdbcType=VARCHAR},
+      traject = #{record.traject,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update weisheng_baojie
+    set id = #{record.id,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      name = #{record.name,jdbcType=VARCHAR},
+      is_luzhang = #{record.isLuzhang,jdbcType=INTEGER},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      village_id = #{record.villageId,jdbcType=INTEGER},
+      mc = #{record.mc,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.xpz.entity.WeishengBaojie">
+    update weisheng_baojie
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="isLuzhang != null">
+        is_luzhang = #{isLuzhang,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="villageId != null">
+        village_id = #{villageId,jdbcType=INTEGER},
+      </if>
+      <if test="mc != null">
+        mc = #{mc,jdbcType=VARCHAR},
+      </if>
+      <if test="traject != null">
+        traject = #{traject,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.xpz.entity.WeishengBaojie">
+    update weisheng_baojie
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      name = #{name,jdbcType=VARCHAR},
+      is_luzhang = #{isLuzhang,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      village_id = #{villageId,jdbcType=INTEGER},
+      mc = #{mc,jdbcType=VARCHAR},
+      traject = #{traject,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.xpz.entity.WeishengBaojie">
+    update weisheng_baojie
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      name = #{name,jdbcType=VARCHAR},
+      is_luzhang = #{isLuzhang,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR},
+      village_id = #{villageId,jdbcType=INTEGER},
+      mc = #{mc,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

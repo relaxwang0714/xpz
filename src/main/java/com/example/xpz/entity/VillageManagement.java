@@ -1,20 +1,17 @@
 package com.example.xpz.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.util.Date;
 
 public class VillageManagement {
-    private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    private Long id;
+
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date updateTime;
 
-    private Integer villageId;
+    private Long villageId;
 
-    private Integer programId;
+    private Long programId;
 
     private String programArea;
 
@@ -28,27 +25,11 @@ public class VillageManagement {
 
     private Integer isNew;
 
-    public Integer getIsDelay() {
-        return isDelay;
-    }
-
-    public void setIsDelay(Integer isDelay) {
-        this.isDelay = isDelay;
-    }
-
-    public Integer getIsNew() {
-        return isNew;
-    }
-
-    public void setIsNew(Integer isNew) {
-        this.isNew = isNew;
-    }
-
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -68,19 +49,19 @@ public class VillageManagement {
         this.updateTime = updateTime;
     }
 
-    public Integer getVillageId() {
+    public Long getVillageId() {
         return villageId;
     }
 
-    public void setVillageId(Integer villageId) {
+    public void setVillageId(Long villageId) {
         this.villageId = villageId;
     }
 
-    public Integer getProgramId() {
+    public Long getProgramId() {
         return programId;
     }
 
-    public void setProgramId(Integer programId) {
+    public void setProgramId(Long programId) {
         this.programId = programId;
     }
 
@@ -89,7 +70,7 @@ public class VillageManagement {
     }
 
     public void setProgramArea(String programArea) {
-        this.programArea = programArea;
+        this.programArea = programArea == null ? null : programArea.trim();
     }
 
     public String getResponsePeople() {
@@ -97,7 +78,7 @@ public class VillageManagement {
     }
 
     public void setResponsePeople(String responsePeople) {
-        this.responsePeople = responsePeople;
+        this.responsePeople = responsePeople == null ? null : responsePeople.trim();
     }
 
     public String getPhone() {
@@ -105,7 +86,7 @@ public class VillageManagement {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public Integer getCarmeraId() {
@@ -116,17 +97,19 @@ public class VillageManagement {
         this.carmeraId = carmeraId;
     }
 
-    public VillageManagement(Integer id, Date createTime, Date updateTime, Integer villageId, Integer programId, String programArea, String responsePeople, String phone, Integer carmeraId, Integer isDelay, Integer isNew) {
-        this.id = id;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.villageId = villageId;
-        this.programId = programId;
-        this.programArea = programArea;
-        this.responsePeople = responsePeople;
-        this.phone = phone;
-        this.carmeraId = carmeraId;
+    public Integer getIsDelay() {
+        return isDelay;
+    }
+
+    public void setIsDelay(Integer isDelay) {
         this.isDelay = isDelay;
+    }
+
+    public Integer getIsNew() {
+        return isNew;
+    }
+
+    public void setIsNew(Integer isNew) {
         this.isNew = isNew;
     }
 }

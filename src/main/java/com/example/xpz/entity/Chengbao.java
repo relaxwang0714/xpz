@@ -1,20 +1,22 @@
 package com.example.xpz.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import org.springframework.data.relational.core.sql.In;
-
 import java.util.Date;
 
 public class Chengbao {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date updateTime;
+
     private String chengbaoPeople;
+
     private String phone;
+
     private Integer area;
+
     private String address;
+
     private Integer villageId;
 
     public Integer getId() {
@@ -46,7 +48,7 @@ public class Chengbao {
     }
 
     public void setChengbaoPeople(String chengbaoPeople) {
-        this.chengbaoPeople = chengbaoPeople;
+        this.chengbaoPeople = chengbaoPeople == null ? null : chengbaoPeople.trim();
     }
 
     public String getPhone() {
@@ -54,7 +56,7 @@ public class Chengbao {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public Integer getArea() {
@@ -70,7 +72,7 @@ public class Chengbao {
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.address = address == null ? null : address.trim();
     }
 
     public Integer getVillageId() {
@@ -78,17 +80,6 @@ public class Chengbao {
     }
 
     public void setVillageId(Integer villageId) {
-        this.villageId = villageId;
-    }
-
-    public Chengbao(Integer id, Date createTime, Date updateTime, String chengbaoPeople, String phone, Integer area, String address, Integer villageId) {
-        this.id = id;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.chengbaoPeople = chengbaoPeople;
-        this.phone = phone;
-        this.area = area;
-        this.address = address;
         this.villageId = villageId;
     }
 }

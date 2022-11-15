@@ -17,45 +17,210 @@ public class DigitalGovernService {
     @Autowired
     WeishengBaojieMapper weishengBaojieMapper;
     @Autowired
-    CumingManyiduMapper cumingManyiduMapper;
+    CunMingManyiduMapper CunMingManyiduMapper;
     @Autowired
     WeixinyuanMapper weixinyuanMapper;
     @Autowired
     ReturnMsg returnMsg;
-    public String selectTingyuanByVillageId(int id){
-        List<Tingyuan> tingyuanFactoryList = tingyuanMapper.selectByVillageId(id);
-        returnMsg.setData(tingyuanFactoryList);
+    public String selectTingyuan(){
+        TingyuanExample tingyuanExample = new TingyuanExample();
+        TingyuanExample.Criteria criteria = tingyuanExample.createCriteria();
+        List<Tingyuan> tingyuanList = tingyuanMapper.selectByExample(tingyuanExample);
+        returnMsg.setData(tingyuanList);
         returnMsg.setCode("0");
-        returnMsg.setMsg("success");
+        returnMsg.setMsg("成功");
         return returnMsg.toString();
     }
-    public String selectTrashClassficationByVillageId(int id){
-        List<TrashClassfication> trashClassficationList = trashClassficationMapper.selectByVillageId(id);
+    public String updateTingyuan(Integer id,TingyuanWithBLOBs tingyuan){
+        TingyuanExample tingyuanExample = new TingyuanExample();
+        TingyuanExample.Criteria criteria = tingyuanExample.createCriteria();
+        criteria.andIdEqualTo(id);
+        int res = tingyuanMapper.updateByExampleSelective(tingyuan,tingyuanExample);
+        if(res ==1) {
+            return returnMsg.toString(String.valueOf(res), "更新成功");
+        }else{
+            return returnMsg.toString(String.valueOf(res),"更新失败");
+        }
+    }
+    public String insertTingyuan(TingyuanWithBLOBs tingyuan){
+        int res= tingyuanMapper.insertSelective(tingyuan);
+        if(res ==1) {
+            return returnMsg.toString(String.valueOf(res), "新增成功");
+        }else{
+            return returnMsg.toString(String.valueOf(res),"新增失败");
+        }
+    }
+    public String deleteTingyuan(Integer id){
+        TingyuanExample tingyuanExample = new TingyuanExample();
+        TingyuanExample.Criteria criteria = tingyuanExample.createCriteria();
+        criteria.andIdEqualTo(id);
+        int res = tingyuanMapper.deleteByExample(tingyuanExample);
+        if(res ==1) {
+            return returnMsg.toString(String.valueOf(res), "删除成功");
+        }else{
+            return returnMsg.toString(String.valueOf(res),"删除失败");
+        }
+    }
+
+    public String selectTrashClassfication(){
+        TrashClassficationExample trashClassficationExample = new TrashClassficationExample();
+        TrashClassficationExample.Criteria criteria = trashClassficationExample.createCriteria();
+        List<TrashClassfication> trashClassficationList = trashClassficationMapper.selectByExample(trashClassficationExample);
         returnMsg.setData(trashClassficationList);
         returnMsg.setCode("0");
-        returnMsg.setMsg("success");
+        returnMsg.setMsg("成功");
         return returnMsg.toString();
     }
-    public String selectWeishengBaojieByVillageId(int id,Integer isLuzhang){
-        List<WeishengBaojie> weishengBaojieList = weishengBaojieMapper.selectByVillageIdAndLuZhang(id,isLuzhang);
+    public String updateTrashClassfication(Integer id,TrashClassfication trashClassfication){
+        TrashClassficationExample trashClassficationExample = new TrashClassficationExample();
+        TrashClassficationExample.Criteria criteria = trashClassficationExample.createCriteria();
+        criteria.andIdEqualTo(id);
+        int res = trashClassficationMapper.updateByExampleSelective(trashClassfication,trashClassficationExample);
+        if(res ==1) {
+            return returnMsg.toString(String.valueOf(res), "更新成功");
+        }else{
+            return returnMsg.toString(String.valueOf(res),"更新失败");
+        }
+    }
+    public String insertTrashClassfication(TrashClassfication trashClassfication){
+        int res= trashClassficationMapper.insertSelective(trashClassfication);
+        if(res ==1) {
+            return returnMsg.toString(String.valueOf(res), "新增成功");
+        }else{
+            return returnMsg.toString(String.valueOf(res),"新增失败");
+        }
+    }
+    public String deleteTrashClassfication(Integer id){
+        TrashClassficationExample trashClassficationExample = new TrashClassficationExample();
+        TrashClassficationExample.Criteria criteria = trashClassficationExample.createCriteria();
+        criteria.andIdEqualTo(id);
+        int res = trashClassficationMapper.deleteByExample(trashClassficationExample);
+        if(res ==1) {
+            return returnMsg.toString(String.valueOf(res), "删除成功");
+        }else{
+            return returnMsg.toString(String.valueOf(res),"删除失败");
+        }
+    }
+
+    public String selectWeishengBaojie(Integer isLuzhang){
+        WeishengBaojieExample weishengBaojieExample = new WeishengBaojieExample();
+        WeishengBaojieExample.Criteria criteria = weishengBaojieExample.createCriteria();
+        criteria.andIsLuzhangEqualTo(isLuzhang);
+        List<WeishengBaojie> weishengBaojieList = weishengBaojieMapper.selectByExample(weishengBaojieExample);
         returnMsg.setData(weishengBaojieList);
         returnMsg.setCode("0");
-        returnMsg.setMsg("success");
+        returnMsg.setMsg("成功");
         return returnMsg.toString();
     }
-    public String selectCunminManyiduByVillageId(int id){
-        List<CunminManyidu> CunminManyiduList = cumingManyiduMapper.selectByVillageId(id);
-        returnMsg.setData(CunminManyiduList);
+    public String updateWeishengBaojie(Integer id,WeishengBaojie weishengBaojie){
+        WeishengBaojieExample weishengBaojieExample = new WeishengBaojieExample();
+        WeishengBaojieExample.Criteria criteria = weishengBaojieExample.createCriteria();
+        criteria.andIdEqualTo(id);
+        int res = weishengBaojieMapper.updateByExampleSelective(weishengBaojie,weishengBaojieExample);
+        if(res ==1) {
+            return returnMsg.toString(String.valueOf(res), "更新成功");
+        }else{
+            return returnMsg.toString(String.valueOf(res),"更新失败");
+        }
+    }
+    public String insertWeishengBaojie(WeishengBaojie weishengBaojie){
+        int res= weishengBaojieMapper.insertSelective(weishengBaojie);
+        if(res ==1) {
+            return returnMsg.toString(String.valueOf(res), "新增成功");
+        }else{
+            return returnMsg.toString(String.valueOf(res),"新增失败");
+        }
+    }
+    public String deleteWeishengBaojie(Integer id){
+        WeishengBaojieExample weishengBaojieExample = new WeishengBaojieExample();
+        WeishengBaojieExample.Criteria criteria = weishengBaojieExample.createCriteria();
+        criteria.andIdEqualTo(id);
+        int res = weishengBaojieMapper.deleteByExample(weishengBaojieExample);
+        if(res ==1) {
+            return returnMsg.toString(String.valueOf(res), "删除成功");
+        }else{
+            return returnMsg.toString(String.valueOf(res),"删除失败");
+        }
+    }
+
+    public String selectCunMingManyidu(){
+        CunMingManyiduExample CunMingManyiduExample = new CunMingManyiduExample();
+        CunMingManyiduExample.Criteria criteria = CunMingManyiduExample.createCriteria();
+        List<CunMingManyidu> CunMingManyiduList = CunMingManyiduMapper.selectByExample(CunMingManyiduExample);
+        returnMsg.setData(CunMingManyiduList);
         returnMsg.setCode("0");
-        returnMsg.setMsg("success");
+        returnMsg.setMsg("成功");
         return returnMsg.toString();
     }
-    public String selectWeixinyuanByVillageId(int id){
-        List<Weixinyuan> weixinyuanList = weixinyuanMapper.selectByVillageId(id);
+    public String updateCunMingManyidu(Integer id,CunMingManyidu CunMingManyidu){
+        CunMingManyiduExample CunMingManyiduExample = new CunMingManyiduExample();
+        CunMingManyiduExample.Criteria criteria = CunMingManyiduExample.createCriteria();
+        criteria.andIdEqualTo(id);
+        int res = CunMingManyiduMapper.updateByExampleSelective(CunMingManyidu,CunMingManyiduExample);
+        if(res ==1) {
+            return returnMsg.toString(String.valueOf(res), "更新成功");
+        }else{
+            return returnMsg.toString(String.valueOf(res),"更新失败");
+        }
+    }
+    public String insertCunMingManyidu(CunMingManyidu CunMingManyidu){
+        int res= CunMingManyiduMapper.insertSelective(CunMingManyidu);
+        if(res ==1) {
+            return returnMsg.toString(String.valueOf(res), "新增成功");
+        }else{
+            return returnMsg.toString(String.valueOf(res),"新增失败");
+        }
+    }
+    public String deleteCunMingManyidu(Integer id){
+        CunMingManyiduExample CunMingManyiduExample = new CunMingManyiduExample();
+        CunMingManyiduExample.Criteria criteria = CunMingManyiduExample.createCriteria();
+        criteria.andIdEqualTo(id);
+        int res = CunMingManyiduMapper.deleteByExample(CunMingManyiduExample);
+        if(res ==1) {
+            return returnMsg.toString(String.valueOf(res), "删除成功");
+        }else{
+            return returnMsg.toString(String.valueOf(res),"删除失败");
+        }
+    }
+
+    public String selectWeixinyuan(){
+        WeixinyuanExample weixinyuanExample = new WeixinyuanExample();
+        WeixinyuanExample.Criteria criteria = weixinyuanExample.createCriteria();
+        List<Weixinyuan> weixinyuanList = weixinyuanMapper.selectByExample(weixinyuanExample);
         returnMsg.setData(weixinyuanList);
         returnMsg.setCode("0");
-        returnMsg.setMsg("success");
+        returnMsg.setMsg("成功");
         return returnMsg.toString();
+    }
+    public String updateWeixinyuan(Integer id,Weixinyuan weixinyuan){
+        WeixinyuanExample weixinyuanExample = new WeixinyuanExample();
+        WeixinyuanExample.Criteria criteria = weixinyuanExample.createCriteria();
+        criteria.andIdEqualTo(id);
+        int res = weixinyuanMapper.updateByExampleSelective(weixinyuan,weixinyuanExample);
+        if(res ==1) {
+            return returnMsg.toString(String.valueOf(res), "更新成功");
+        }else{
+            return returnMsg.toString(String.valueOf(res),"更新失败");
+        }
+    }
+    public String insertWeixinyuan(Weixinyuan weixinyuan){
+        int res= weixinyuanMapper.insertSelective(weixinyuan);
+        if(res ==1) {
+            return returnMsg.toString(String.valueOf(res), "新增成功");
+        }else{
+            return returnMsg.toString(String.valueOf(res),"新增失败");
+        }
+    }
+    public String deleteWeixinyuan(Integer id){
+        WeixinyuanExample weixinyuanExample = new WeixinyuanExample();
+        WeixinyuanExample.Criteria criteria = weixinyuanExample.createCriteria();
+        criteria.andIdEqualTo(id);
+        int res = weixinyuanMapper.deleteByExample(weixinyuanExample);
+        if(res ==1) {
+            return returnMsg.toString(String.valueOf(res), "删除成功");
+        }else{
+            return returnMsg.toString(String.valueOf(res),"删除失败");
+        }
     }
 
 

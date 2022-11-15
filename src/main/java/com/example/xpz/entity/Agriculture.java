@@ -1,14 +1,12 @@
 package com.example.xpz.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 import java.util.Date;
 
 public class Agriculture {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date updateTime;
 
     private String business;
@@ -50,7 +48,7 @@ public class Agriculture {
     }
 
     public void setBusiness(String business) {
-        this.business = business;
+        this.business = business == null ? null : business.trim();
     }
 
     public String getDianzhu() {
@@ -58,7 +56,7 @@ public class Agriculture {
     }
 
     public void setDianzhu(String dianzhu) {
-        this.dianzhu = dianzhu;
+        this.dianzhu = dianzhu == null ? null : dianzhu.trim();
     }
 
     public String getPhone() {
@@ -66,7 +64,7 @@ public class Agriculture {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public Integer getVillageId() {
@@ -82,17 +80,6 @@ public class Agriculture {
     }
 
     public void setPicUrl(String picUrl) {
-        this.picUrl = picUrl;
-    }
-
-    public Agriculture(Integer id, Date createTime, Date updateTime, String business, String dianzhu, String phone, Integer villageId, String picUrl) {
-        this.id = id;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.business = business;
-        this.dianzhu = dianzhu;
-        this.phone = phone;
-        this.villageId = villageId;
-        this.picUrl = picUrl;
+        this.picUrl = picUrl == null ? null : picUrl.trim();
     }
 }

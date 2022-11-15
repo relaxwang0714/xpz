@@ -1,32 +1,29 @@
 package com.example.xpz.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.util.Date;
 
 public class DigitalInfrastructure {
-    private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    private Long id;
+
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date updateTime;
 
     private Integer villageId;
 
-    private Integer FourGCover;
+    private Integer fourgCover;
 
-    private Integer BaseStation;
+    private Integer baseStation;
 
     private Integer internetRate;
 
     private Integer hundredInternetRate;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -54,20 +51,20 @@ public class DigitalInfrastructure {
         this.villageId = villageId;
     }
 
-    public Integer getFourGCover() {
-        return FourGCover;
+    public Integer getfourgCover() {
+        return fourgCover;
     }
 
-    public void setFourGCover(Integer fourGCover) {
-        FourGCover = fourGCover;
+    public void setfourgCover(Integer fourgCover) {
+        this.fourgCover = fourgCover;
     }
 
     public Integer getBaseStation() {
-        return BaseStation;
+        return baseStation;
     }
 
     public void setBaseStation(Integer baseStation) {
-        BaseStation = baseStation;
+        this.baseStation = baseStation;
     }
 
     public Integer getInternetRate() {
@@ -83,17 +80,6 @@ public class DigitalInfrastructure {
     }
 
     public void setHundredInternetRate(Integer hundredInternetRate) {
-        this.hundredInternetRate = hundredInternetRate;
-    }
-
-    public DigitalInfrastructure(Integer id, Date createTime, Date updateTime, Integer villageId, Integer fourGCover, Integer baseStation, Integer internetRate, Integer hundredInternetRate) {
-        this.id = id;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.villageId = villageId;
-        FourGCover = fourGCover;
-        BaseStation = baseStation;
-        this.internetRate = internetRate;
         this.hundredInternetRate = hundredInternetRate;
     }
 }

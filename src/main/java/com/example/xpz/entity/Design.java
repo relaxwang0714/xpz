@@ -1,15 +1,12 @@
 package com.example.xpz.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.util.Date;
 
 public class Design {
-    private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    private Long id;
+
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date updateTime;
 
     private String designServiceName;
@@ -24,11 +21,11 @@ public class Design {
 
     private Integer villageId;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -53,7 +50,7 @@ public class Design {
     }
 
     public void setDesignServiceName(String designServiceName) {
-        this.designServiceName = designServiceName;
+        this.designServiceName = designServiceName == null ? null : designServiceName.trim();
     }
 
     public String getDesignServiceAddress() {
@@ -61,7 +58,7 @@ public class Design {
     }
 
     public void setDesignServiceAddress(String designServiceAddress) {
-        this.designServiceAddress = designServiceAddress;
+        this.designServiceAddress = designServiceAddress == null ? null : designServiceAddress.trim();
     }
 
     public String getLongitude() {
@@ -69,7 +66,7 @@ public class Design {
     }
 
     public void setLongitude(String longitude) {
-        this.longitude = longitude;
+        this.longitude = longitude == null ? null : longitude.trim();
     }
 
     public String getLatitude() {
@@ -77,7 +74,7 @@ public class Design {
     }
 
     public void setLatitude(String latitude) {
-        this.latitude = latitude;
+        this.latitude = latitude == null ? null : latitude.trim();
     }
 
     public Integer getHeight() {
@@ -93,18 +90,6 @@ public class Design {
     }
 
     public void setVillageId(Integer villageId) {
-        this.villageId = villageId;
-    }
-
-    public Design(Integer id, Date createTime, Date updateTime, String designServiceName, String designServiceAddress, String longitude, String latitude, Integer height, Integer villageId) {
-        this.id = id;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.designServiceName = designServiceName;
-        this.designServiceAddress = designServiceAddress;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.height = height;
         this.villageId = villageId;
     }
 }

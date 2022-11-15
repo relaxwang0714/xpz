@@ -1,15 +1,12 @@
 package com.example.xpz.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import org.springframework.data.relational.core.sql.In;
-
 import java.util.Date;
 
 public class ChanyeJianshe {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date updateTime;
 
     private Integer chejian;
@@ -70,14 +67,6 @@ public class ChanyeJianshe {
         this.area = area;
     }
 
-    public Integer getVillageId() {
-        return villageId;
-    }
-
-    public void setVillageId(Integer villageId) {
-        this.villageId = villageId;
-    }
-
     public Integer getYear() {
         return year;
     }
@@ -86,14 +75,11 @@ public class ChanyeJianshe {
         this.year = year;
     }
 
-    public ChanyeJianshe(Integer id, Date createTime, Date updateTime, Integer chejian, Integer shengchanxian, Integer area, Integer year, Integer villageId) {
-        this.id = id;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.chejian = chejian;
-        this.shengchanxian = shengchanxian;
-        this.area = area;
-        this.year = year;
+    public Integer getVillageId() {
+        return villageId;
+    }
+
+    public void setVillageId(Integer villageId) {
         this.villageId = villageId;
     }
 }

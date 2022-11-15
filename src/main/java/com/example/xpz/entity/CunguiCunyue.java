@@ -1,17 +1,17 @@
 package com.example.xpz.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 import java.util.Date;
 
 public class CunguiCunyue {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date updateTime;
-    private String profile;
+
     private Integer villageId;
+
+    private String profile;
 
     public Integer getId() {
         return id;
@@ -37,14 +37,6 @@ public class CunguiCunyue {
         this.updateTime = updateTime;
     }
 
-    public String getProfile() {
-        return profile;
-    }
-
-    public void setProfile(String profile) {
-        this.profile = profile;
-    }
-
     public Integer getVillageId() {
         return villageId;
     }
@@ -53,11 +45,11 @@ public class CunguiCunyue {
         this.villageId = villageId;
     }
 
-    public CunguiCunyue(Integer id, Date createTime, Date updateTime, String profile, Integer villageId) {
-        this.id = id;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.profile = profile;
-        this.villageId = villageId;
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile == null ? null : profile.trim();
     }
 }

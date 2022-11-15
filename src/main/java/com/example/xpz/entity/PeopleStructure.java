@@ -1,15 +1,12 @@
 package com.example.xpz.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.util.Date;
 
 public class PeopleStructure {
-    private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    private Long id;
+
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date updateTime;
 
     private Integer zeroEighteen;
@@ -20,15 +17,15 @@ public class PeopleStructure {
 
     private Integer sixtyfiveEightyfive;
 
-    private Integer overEightyfive;
+    private Integer overEightfive;
 
     private Integer villageId;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -80,12 +77,12 @@ public class PeopleStructure {
         this.sixtyfiveEightyfive = sixtyfiveEightyfive;
     }
 
-    public Integer getOverEightyfive() {
-        return overEightyfive;
+    public Integer getOverEightfive() {
+        return overEightfive;
     }
 
-    public void setOverEightyfive(Integer overEightyfive) {
-        this.overEightyfive = overEightyfive;
+    public void setOverEightfive(Integer overEightfive) {
+        this.overEightfive = overEightfive;
     }
 
     public Integer getVillageId() {
@@ -93,18 +90,6 @@ public class PeopleStructure {
     }
 
     public void setVillageId(Integer villageId) {
-        this.villageId = villageId;
-    }
-
-    public PeopleStructure(Integer id, Date createTime, Date updateTime, Integer zeroEighteen, Integer nighteenThirtyfive, Integer thirtyfiveSixtyfive, Integer sixtyfiveEightyfive, Integer overEightyfive, Integer villageId) {
-        this.id = id;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.zeroEighteen = zeroEighteen;
-        this.nighteenThirtyfive = nighteenThirtyfive;
-        this.thirtyfiveSixtyfive = thirtyfiveSixtyfive;
-        this.sixtyfiveEightyfive = sixtyfiveEightyfive;
-        this.overEightyfive = overEightyfive;
         this.villageId = villageId;
     }
 }

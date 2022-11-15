@@ -1,30 +1,358 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.xpz.mapper.ParkMapper">
-    <resultMap id="BaseResultMap" type="com.example.xpz.entity.Park">
-        <constructor>
-            <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-            <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-            <arg column="stop_area" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="response_people" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="phone" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="lefts" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="village_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="shiliang" javaType="java.lang.String" jdbcType="LONGVARCHAR" />
-            <arg column="park_name" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="amount" javaType="java.lang.Integer" jdbcType="INTEGER" />
-        </constructor>
-    </resultMap>
-    <sql id="Base_Column_List">
-        id, create_time,update_time,stop_area,response_people,phone,lefts,village_id,shiliang,park_name,amount
-    </sql>
-    <select id="selectByVillageId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List" />
-        from park
-        where village_id = #{villageId,jdbcType=INTEGER}
-    </select>
-
-
+  <resultMap id="BaseResultMap" type="com.example.xpz.entity.Park">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="stop_area" jdbcType="VARCHAR" property="stopArea" />
+    <result column="response_people" jdbcType="VARCHAR" property="responsePeople" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="lefts" jdbcType="INTEGER" property="lefts" />
+    <result column="village_id" jdbcType="INTEGER" property="villageId" />
+    <result column="park_name" jdbcType="VARCHAR" property="parkName" />
+    <result column="amount" jdbcType="INTEGER" property="amount" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.xpz.entity.Park">
+    <result column="shiliang" jdbcType="LONGVARCHAR" property="shiliang" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, create_time, update_time, stop_area, response_people, phone, lefts, village_id, 
+    park_name, amount
+  </sql>
+  <sql id="Blob_Column_List">
+    shiliang
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.example.xpz.entity.ParkExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from park
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.example.xpz.entity.ParkExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from park
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from park
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from park
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.xpz.entity.ParkExample">
+    delete from park
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.xpz.entity.Park">
+    insert into park (id, create_time, update_time, 
+      stop_area, response_people, phone, 
+      lefts, village_id, park_name, 
+      amount, shiliang)
+    values (#{id,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{stopArea,jdbcType=VARCHAR}, #{responsePeople,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{lefts,jdbcType=INTEGER}, #{villageId,jdbcType=INTEGER}, #{parkName,jdbcType=VARCHAR}, 
+      #{amount,jdbcType=INTEGER}, #{shiliang,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.xpz.entity.Park">
+    insert into park
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="stopArea != null">
+        stop_area,
+      </if>
+      <if test="responsePeople != null">
+        response_people,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="lefts != null">
+        lefts,
+      </if>
+      <if test="villageId != null">
+        village_id,
+      </if>
+      <if test="parkName != null">
+        park_name,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="shiliang != null">
+        shiliang,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stopArea != null">
+        #{stopArea,jdbcType=VARCHAR},
+      </if>
+      <if test="responsePeople != null">
+        #{responsePeople,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="lefts != null">
+        #{lefts,jdbcType=INTEGER},
+      </if>
+      <if test="villageId != null">
+        #{villageId,jdbcType=INTEGER},
+      </if>
+      <if test="parkName != null">
+        #{parkName,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="shiliang != null">
+        #{shiliang,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.xpz.entity.ParkExample" resultType="java.lang.Long">
+    select count(*) from park
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update park
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.stopArea != null">
+        stop_area = #{record.stopArea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.responsePeople != null">
+        response_people = #{record.responsePeople,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lefts != null">
+        lefts = #{record.lefts,jdbcType=INTEGER},
+      </if>
+      <if test="record.villageId != null">
+        village_id = #{record.villageId,jdbcType=INTEGER},
+      </if>
+      <if test="record.parkName != null">
+        park_name = #{record.parkName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amount != null">
+        amount = #{record.amount,jdbcType=INTEGER},
+      </if>
+      <if test="record.shiliang != null">
+        shiliang = #{record.shiliang,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update park
+    set id = #{record.id,jdbcType=BIGINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      stop_area = #{record.stopArea,jdbcType=VARCHAR},
+      response_people = #{record.responsePeople,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      lefts = #{record.lefts,jdbcType=INTEGER},
+      village_id = #{record.villageId,jdbcType=INTEGER},
+      park_name = #{record.parkName,jdbcType=VARCHAR},
+      amount = #{record.amount,jdbcType=INTEGER},
+      shiliang = #{record.shiliang,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update park
+    set id = #{record.id,jdbcType=BIGINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      stop_area = #{record.stopArea,jdbcType=VARCHAR},
+      response_people = #{record.responsePeople,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      lefts = #{record.lefts,jdbcType=INTEGER},
+      village_id = #{record.villageId,jdbcType=INTEGER},
+      park_name = #{record.parkName,jdbcType=VARCHAR},
+      amount = #{record.amount,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.xpz.entity.Park">
+    update park
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="stopArea != null">
+        stop_area = #{stopArea,jdbcType=VARCHAR},
+      </if>
+      <if test="responsePeople != null">
+        response_people = #{responsePeople,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="lefts != null">
+        lefts = #{lefts,jdbcType=INTEGER},
+      </if>
+      <if test="villageId != null">
+        village_id = #{villageId,jdbcType=INTEGER},
+      </if>
+      <if test="parkName != null">
+        park_name = #{parkName,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="shiliang != null">
+        shiliang = #{shiliang,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.xpz.entity.Park">
+    update park
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      stop_area = #{stopArea,jdbcType=VARCHAR},
+      response_people = #{responsePeople,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      lefts = #{lefts,jdbcType=INTEGER},
+      village_id = #{villageId,jdbcType=INTEGER},
+      park_name = #{parkName,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=INTEGER},
+      shiliang = #{shiliang,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.xpz.entity.Park">
+    update park
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      stop_area = #{stopArea,jdbcType=VARCHAR},
+      response_people = #{responsePeople,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      lefts = #{lefts,jdbcType=INTEGER},
+      village_id = #{villageId,jdbcType=INTEGER},
+      park_name = #{parkName,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
 </mapper>

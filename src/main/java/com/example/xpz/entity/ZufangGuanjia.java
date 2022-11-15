@@ -1,19 +1,22 @@
 package com.example.xpz.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 import java.util.Date;
 
 public class ZufangGuanjia {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date updateTime;
+
     private String huzhuName;
+
     private String address;
+
     private Integer isChuzu;
+
     private String phone;
+
     private Integer villageId;
 
     public Integer getId() {
@@ -45,7 +48,7 @@ public class ZufangGuanjia {
     }
 
     public void setHuzhuName(String huzhuName) {
-        this.huzhuName = huzhuName;
+        this.huzhuName = huzhuName == null ? null : huzhuName.trim();
     }
 
     public String getAddress() {
@@ -53,7 +56,7 @@ public class ZufangGuanjia {
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.address = address == null ? null : address.trim();
     }
 
     public Integer getIsChuzu() {
@@ -69,7 +72,7 @@ public class ZufangGuanjia {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public Integer getVillageId() {
@@ -77,17 +80,6 @@ public class ZufangGuanjia {
     }
 
     public void setVillageId(Integer villageId) {
-        this.villageId = villageId;
-    }
-
-    public ZufangGuanjia(Integer id, Date createTime, Date updateTime, String huzhuName, String address, Integer isChuzu, String phone, Integer villageId) {
-        this.id = id;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.huzhuName = huzhuName;
-        this.address = address;
-        this.isChuzu = isChuzu;
-        this.phone = phone;
         this.villageId = villageId;
     }
 }

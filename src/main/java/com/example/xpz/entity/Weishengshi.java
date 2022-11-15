@@ -1,14 +1,12 @@
 package com.example.xpz.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 import java.util.Date;
 
 public class Weishengshi {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date updateTime;
 
     private String address;
@@ -50,7 +48,7 @@ public class Weishengshi {
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.address = address == null ? null : address.trim();
     }
 
     public String getResponsePeople() {
@@ -58,7 +56,7 @@ public class Weishengshi {
     }
 
     public void setResponsePeople(String responsePeople) {
-        this.responsePeople = responsePeople;
+        this.responsePeople = responsePeople == null ? null : responsePeople.trim();
     }
 
     public String getPhone() {
@@ -66,7 +64,7 @@ public class Weishengshi {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public Integer getVillageId() {
@@ -82,17 +80,6 @@ public class Weishengshi {
     }
 
     public void setShiliang(String shiliang) {
-        this.shiliang = shiliang;
-    }
-
-    public Weishengshi(Integer id, Date createTime, Date updateTime, String address, String responsePeople, String phone, Integer villageId, String shiliang) {
-        this.id = id;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.address = address;
-        this.responsePeople = responsePeople;
-        this.phone = phone;
-        this.villageId = villageId;
-        this.shiliang = shiliang;
+        this.shiliang = shiliang == null ? null : shiliang.trim();
     }
 }

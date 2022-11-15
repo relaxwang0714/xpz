@@ -13,7 +13,7 @@
 
         <!--       数据库链接URL，用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://172.16.10.166:3306/cailu2?useSSL=false&amp;serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=UTF-8"
+                        connectionURL="jdbc:mysql://localhost:3306/xpz_dataset?useSSL=false&amp;serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=UTF-8"
                         userId="root"
                         password="123456">
             <property name="nullCatalogMeansCurrent" value="true"/>
@@ -36,7 +36,7 @@
 
         <!-- 生成映射文件的包名和位置  这里写你要把生成的xml文件放到哪个目录下面-->
         <sqlMapGenerator targetPackage="mapper"
-                         targetProject="src/main/resources/static/mapper">
+                         targetProject="src/main/resources/static/">
             <property name="enableSubPackages" value="false" />
         </sqlMapGenerator>
 
@@ -46,13 +46,56 @@
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
-<!--        <table tableName="cunming" domainObjectName="Cunming"/>-->
-        <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名 -->
-<!--        <table tableName="fangwu" domainObjectName="Fangwu"/>-->
-<!--            <table tableName="laonian_xiehui" domainObjectName="LaonianXiehui"/>-->
-<!--            <table tableName="funv_xiehui" domainObjectName="FunvXiehui"/>-->
-            <table tableName="dangyuan" domainObjectName="Dangyuan"/>
-<!--            <table tableName="lianxihu" domainObjectName="Lianxihu"/>-->
+        <table tableName="construction_list" domainObjectName="ConstructionList"/>
+<!--            <table tableName="dangyuan_fazhan" domainObjectName="DangyuanFazhan"/>-->
+<!--            <table tableName="dangyuan_fengcai" domainObjectName="DangyuanFengcai"/>-->
+<!--        <table tableName="dangjian_facilty" domainObjectName="DangjianFacilty"/>-->
+<!--        <table tableName="tudi_liuzhuan" domainObjectName="Tudiliuzhuan"/>-->
+<!--        <table tableName="agriculture" domainObjectName="Agriculture"/>-->
+<!--        <table tableName="chanye_jianshe" domainObjectName="ChanyeJianshe"/>-->
+<!--        <table tableName="chengbao" domainObjectName="Chengbao"/>-->
+<!--        <table tableName="chuangke" domainObjectName="Chuangke"/>-->
+<!--        <table tableName="chuangye_program" domainObjectName="ChuangyeProgram"/>-->
+<!--        <table tableName="construction_list" domainObjectName="Constructionlist"/>-->
+<!--        <table tableName="cungui_cunyue" domainObjectName="CunguiCunyue"/>-->
+<!--        <table tableName="cunming" domainObjectName="CunMing"/>-->
+<!--        <table tableName="cunming_manyidu" domainObjectName="CunMingManyidu"/>-->
+<!--        <table tableName="current_data" domainObjectName="Currentdata"/>-->
+<!--        <table tableName="dangan" domainObjectName="Dangan"/>-->
+<!--        <table tableName="dangyuan" domainObjectName="Dangyuan"/>-->
+<!--        <table tableName="design" domainObjectName="Design"/>-->
+<!--        <table tableName="digital_factory" domainObjectName="DigitalFactory"/>-->
+<!--        <table tableName="digital_infrastructure" domainObjectName="DigitalInfrastructure"/>-->
+<!--        <table tableName="education" domainObjectName="Education"/>-->
+<!--        <table tableName="feiyi_ziyuan" domainObjectName="FeiyiZiyuan"/>-->
+<!--        <table tableName="guihua_data" domainObjectName="Guihuadata"/>-->
+<!--        <table tableName="kuaidi" domainObjectName="Kuaidi"/>-->
+<!--        <table tableName="laodongli_income" domainObjectName="LaodongliIncome"/>-->
+<!--        <table tableName="lvyou_xiangmu" domainObjectName="LvyouXiangmu"/>-->
+<!--        <table tableName="meeting" domainObjectName="Meeting"/>-->
+<!--        <table tableName="mimian_jidi" domainObjectName="MimianJidi"/>-->
+<!--        <table tableName="neighbour" domainObjectName="Neighbour"/>-->
+<!--        <table tableName="neighbour_fengcai" domainObjectName="Neighbourfengcai"/>-->
+<!--        <table tableName="park" domainObjectName="Park"/>-->
+<!--        <table tableName="people_structure" domainObjectName="PeopleStructure"/>-->
+<!--        <table tableName="qicai_tianyuan" domainObjectName="QicaiTianyuan"/>-->
+<!--        <table tableName="style" domainObjectName="Style"/>-->
+<!--        <table tableName="tese_chanpin" domainObjectName="TeseChanpin"/>-->
+<!--        <table tableName="tingyuan" domainObjectName="Tingyuan"/>-->
+<!--        <table tableName="trash" domainObjectName="Trash"/>-->
+<!--        <table tableName="trash_classfication" domainObjectName="TrashClassfication"/>-->
+<!--        <table tableName="tudi_liuzhuan" domainObjectName="TrashClassfication"/>-->
+<!--        <table tableName="country" domainObjectName="Country"/>-->
+<!--        <table tableName="village_culture" domainObjectName="VillageCulture"/>-->
+<!--        <table tableName="village_management" domainObjectName="VillageManagement"/>-->
+<!--        <table tableName="weisheng_baojie" domainObjectName="WeishengBaojie"/>-->
+<!--        <table tableName="weishengshi" domainObjectName="Weishengshi"/>-->
+<!--        <table tableName="weixinyuan" domainObjectName="Weixinyuan"/>-->
+<!--        <table tableName="zhihui_yanglao" domainObjectName="ZhihuiYanglao"/>-->
+<!--        <table tableName="zichan" domainObjectName="Zichan"/>-->
+<!--        <table tableName="zichan_keshi" domainObjectName="ZichanKeshi"/>-->
+<!--            <table tableName="ziyuan_income" domainObjectName="ZiyuanIncome"/>-->
+<!--        <table tableName="zufang_guanjia" domainObjectName="ZufangGuanjia"/>-->
 <!--        <table tableName="people_structure" domainObjectName="PeopleStructure"/>-->
 <!--        <table tableName="overview" domainObjectName="Overview"/>-->
 <!--        <table tableName="caomao_fengcai" domainObjectName="CaomaoFengcai"/>-->
@@ -60,35 +103,6 @@
 <!--        <table tableName="jingji_zengshou" domainObjectName="JingjiZengshou"/>-->
 <!--        <table tableName="ruoshi_qunti" domainObjectName="RuoshiQunti"/>-->
 <!--        <table tableName="bangfu_huodong" domainObjectName="BangfuHuodong"/>-->
-<!--        <table tableName="caomao_yishi" domainObjectName="CaomaoYishi"/>-->
-<!--        <table tableName="chuzufang" domainObjectName="Chuzufang"/>-->
-<!--        <table tableName="college" domainObjectName="College"/>-->
-<!--        <table tableName="cunming_jifen" domainObjectName="cunmingJifen"/>-->
-<!--        <table tableName="dangjian_zhendi" domainObjectName="DangjianZhendi"/>-->
-<!--        <table tableName="dangyuan_activity" domainObjectName="DangyuanHuodong"/>-->
-<!--        <table tableName="dianpu" domainObjectName="Dianpu"/>-->
-<!--        <table tableName="fengmao_guankong" domainObjectName="FengmaoGuankong"/>-->
-<!--        <table tableName="gongyi_guanggao" domainObjectName="GongyiGuanggao"/>-->
-<!--        <table tableName="gongyi_huodong" domainObjectName="GongyiHuodong"/>-->
-<!--        <table tableName="gongyi_zuzhi" domainObjectName="GongyiZuzhi"/>-->
-<!--        <table tableName="jiancha_lianluozhan" domainObjectName="JianchaLianluozhan"/>-->
-<!--        <table tableName="jiti_fangchan" domainObjectName="JitiFangchan"/>-->
-<!--        <table tableName="lingli_youyue" domainObjectName="LingliYouyue"/>-->
-<!--        <table tableName="lingli_zhongxin" domainObjectName="LingliZhongxin"/>-->
-<!--        <table tableName="puhui_jinrong" domainObjectName="PuhuiJinrong"/>-->
-<!--        <table tableName="ruoshi_qunti" domainObjectName="RuoshiQunti"/>-->
-<!--        <table tableName="shijian_tongban" domainObjectName="ShijianTongban"/>-->
-<!--        <table tableName="tudi_liuzhuan" domainObjectName="TudiLiuzhuan"/>-->
-<!--        <table tableName="wangge_xinxi" domainObjectName="WanggeXinxi"/>-->
-<!--        <table tableName="xiangmu_gongkai" domainObjectName="XiangmuGongkai"/>-->
-<!--        <table tableName="xiangmu_yusuan" domainObjectName="XiangmuYusuan"/>-->
-<!--        <table tableName="xiangtu_minsu" domainObjectName="XiangtuMinsu"/>-->
-<!--        <table tableName="xingang_fengcai" domainObjectName="XingangFengcai"/>-->
-<!--        <table tableName="yetai_fenbu" domainObjectName="YetaiFenbu"/>-->
-<!--        <table tableName="yunyou_xingang" domainObjectName="YunyouXingang"/>-->
-<!--        <table tableName="zaijian_list" domainObjectName="ZaijianList"/>-->
-<!--        <table tableName="zhihui_dangjian" domainObjectName="ZhihuiDangjian"/>-->
-<!--        <table tableName="zuimei_xilie" domainObjectName="ZuimeiXilie"/>-->
 
 
     </context>

@@ -1,14 +1,12 @@
 package com.example.xpz.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 import java.util.Date;
 
 public class Education {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date updateTime;
 
     private String studentName;
@@ -52,7 +50,7 @@ public class Education {
     }
 
     public void setStudentName(String studentName) {
-        this.studentName = studentName;
+        this.studentName = studentName == null ? null : studentName.trim();
     }
 
     public String getParentName() {
@@ -60,7 +58,7 @@ public class Education {
     }
 
     public void setParentName(String parentName) {
-        this.parentName = parentName;
+        this.parentName = parentName == null ? null : parentName.trim();
     }
 
     public String getSchool() {
@@ -68,7 +66,7 @@ public class Education {
     }
 
     public void setSchool(String school) {
-        this.school = school;
+        this.school = school == null ? null : school.trim();
     }
 
     public Integer getSchoolId() {
@@ -92,18 +90,6 @@ public class Education {
     }
 
     public void setVillageId(Integer villageId) {
-        this.villageId = villageId;
-    }
-
-    public Education(Integer id, Date createTime, Date updateTime, String studentName, String parentName, String school, Integer schoolId, Integer grade, Integer villageId) {
-        this.id = id;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.studentName = studentName;
-        this.parentName = parentName;
-        this.school = school;
-        this.schoolId = schoolId;
-        this.grade = grade;
         this.villageId = villageId;
     }
 }

@@ -1,18 +1,20 @@
 package com.example.xpz.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 import java.util.Date;
 
 public class Chuangke {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date updateTime;
+
     private String name;
+
     private String address;
+
     private String phone;
+
     private Integer villageId;
 
     public Integer getId() {
@@ -44,7 +46,7 @@ public class Chuangke {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
     }
 
     public String getAddress() {
@@ -52,7 +54,7 @@ public class Chuangke {
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.address = address == null ? null : address.trim();
     }
 
     public String getPhone() {
@@ -60,7 +62,7 @@ public class Chuangke {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public Integer getVillageId() {
@@ -68,16 +70,6 @@ public class Chuangke {
     }
 
     public void setVillageId(Integer villageId) {
-        this.villageId = villageId;
-    }
-
-    public Chuangke(Integer id, Date createTime, Date updateTime, String name, String address, String phone, Integer villageId) {
-        this.id = id;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.name = name;
-        this.address = address;
-        this.phone = phone;
         this.villageId = villageId;
     }
 }

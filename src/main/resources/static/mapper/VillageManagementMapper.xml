@@ -1,71 +1,306 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.xpz.mapper.VillageManagementMapper">
-    <resultMap id="BaseResultMap" type="com.example.xpz.entity.VillageManagement">
-        <constructor>
-            <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-            <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-            <arg column="village_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="program_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="program_area" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="response_people" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="phone" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="carmera_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="is_delay" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="is_new" javaType="java.lang.Integer" jdbcType="INTEGER" />
-        </constructor>
-    </resultMap>
-    <resultMap id="Countyujin" type="com.example.xpz.entity.Yujin">
-        <constructor>
-            <arg column="normal" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="warn" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="log" javaType="java.lang.Integer" jdbcType="INTEGER" />
-        </constructor>
-    </resultMap>
-    <resultMap id="Countgaizao" type="com.example.xpz.entity.Gaizao">
-        <constructor>
-            <arg column="gaizao" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="xinzeng" javaType="java.lang.Integer" jdbcType="INTEGER" />
-        </constructor>
-    </resultMap>
-    <sql id="Base_Column_List">
-        id, create_time,update_time,village_id,program_id,program_area,response_people,phone,carmera_id,is_delay,is_new
-    </sql>
-    <select id="selectByVillageId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List" />
-        from village_management
-        where village_id = #{villageId,jdbcType=INTEGER}
-    </select>
-    <select id="selectByCount" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        is_delay
-        from village_management
-        where village_id = #{villageId,jdbcType=INTEGER}
-    </select>
-    <select id="CountyujinByVillageId" parameterType="java.lang.Integer" resultMap="Countyujin">
-        SELECT
-            SUM(is_delay = 0) AS normal,
-            SUM(is_delay = 1) AS warn,
-            SUM(is_delay = 2) AS log
-        FROM
-            village_management
-        WHERE
-            1 = 1
-        AND village_id = #{villageId,jdbcType=INTEGER};
-
-    </select>
-    <select id="CountGaizaoByVillageId" parameterType="java.lang.Integer" resultMap="Countgaizao">
-        SELECT
-            SUM(is_new = 0) AS gaizao,
-            SUM(is_new = 1) AS xinzeng
-        FROM
-            village_management
-        WHERE
-            1 = 1
-          AND village_id = #{villageId,jdbcType=INTEGER};
-
-    </select>
-
+  <resultMap id="BaseResultMap" type="com.example.xpz.entity.VillageManagement">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="village_id" jdbcType="BIGINT" property="villageId" />
+    <result column="program_id" jdbcType="BIGINT" property="programId" />
+    <result column="program_area" jdbcType="VARCHAR" property="programArea" />
+    <result column="response_people" jdbcType="VARCHAR" property="responsePeople" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="carmera_id" jdbcType="INTEGER" property="carmeraId" />
+    <result column="is_delay" jdbcType="INTEGER" property="isDelay" />
+    <result column="is_new" jdbcType="INTEGER" property="isNew" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, create_time, update_time, village_id, program_id, program_area, response_people, 
+    phone, carmera_id, is_delay, is_new
+  </sql>
+  <select id="selectByExample" parameterType="com.example.xpz.entity.VillageManagementExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from village_management
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from village_management
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from village_management
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.xpz.entity.VillageManagementExample">
+    delete from village_management
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.xpz.entity.VillageManagement">
+    insert into village_management (id, create_time, update_time, 
+      village_id, program_id, program_area, 
+      response_people, phone, carmera_id, 
+      is_delay, is_new)
+    values (#{id,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{villageId,jdbcType=BIGINT}, #{programId,jdbcType=BIGINT}, #{programArea,jdbcType=VARCHAR}, 
+      #{responsePeople,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{carmeraId,jdbcType=INTEGER}, 
+      #{isDelay,jdbcType=INTEGER}, #{isNew,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.xpz.entity.VillageManagement">
+    insert into village_management
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="villageId != null">
+        village_id,
+      </if>
+      <if test="programId != null">
+        program_id,
+      </if>
+      <if test="programArea != null">
+        program_area,
+      </if>
+      <if test="responsePeople != null">
+        response_people,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="carmeraId != null">
+        carmera_id,
+      </if>
+      <if test="isDelay != null">
+        is_delay,
+      </if>
+      <if test="isNew != null">
+        is_new,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="villageId != null">
+        #{villageId,jdbcType=BIGINT},
+      </if>
+      <if test="programId != null">
+        #{programId,jdbcType=BIGINT},
+      </if>
+      <if test="programArea != null">
+        #{programArea,jdbcType=VARCHAR},
+      </if>
+      <if test="responsePeople != null">
+        #{responsePeople,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="carmeraId != null">
+        #{carmeraId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelay != null">
+        #{isDelay,jdbcType=INTEGER},
+      </if>
+      <if test="isNew != null">
+        #{isNew,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.xpz.entity.VillageManagementExample" resultType="java.lang.Long">
+    select count(*) from village_management
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update village_management
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.villageId != null">
+        village_id = #{record.villageId,jdbcType=BIGINT},
+      </if>
+      <if test="record.programId != null">
+        program_id = #{record.programId,jdbcType=BIGINT},
+      </if>
+      <if test="record.programArea != null">
+        program_area = #{record.programArea,jdbcType=VARCHAR},
+      </if>
+      <if test="record.responsePeople != null">
+        response_people = #{record.responsePeople,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.carmeraId != null">
+        carmera_id = #{record.carmeraId,jdbcType=INTEGER},
+      </if>
+      <if test="record.isDelay != null">
+        is_delay = #{record.isDelay,jdbcType=INTEGER},
+      </if>
+      <if test="record.isNew != null">
+        is_new = #{record.isNew,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update village_management
+    set id = #{record.id,jdbcType=BIGINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      village_id = #{record.villageId,jdbcType=BIGINT},
+      program_id = #{record.programId,jdbcType=BIGINT},
+      program_area = #{record.programArea,jdbcType=VARCHAR},
+      response_people = #{record.responsePeople,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      carmera_id = #{record.carmeraId,jdbcType=INTEGER},
+      is_delay = #{record.isDelay,jdbcType=INTEGER},
+      is_new = #{record.isNew,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.xpz.entity.VillageManagement">
+    update village_management
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="villageId != null">
+        village_id = #{villageId,jdbcType=BIGINT},
+      </if>
+      <if test="programId != null">
+        program_id = #{programId,jdbcType=BIGINT},
+      </if>
+      <if test="programArea != null">
+        program_area = #{programArea,jdbcType=VARCHAR},
+      </if>
+      <if test="responsePeople != null">
+        response_people = #{responsePeople,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="carmeraId != null">
+        carmera_id = #{carmeraId,jdbcType=INTEGER},
+      </if>
+      <if test="isDelay != null">
+        is_delay = #{isDelay,jdbcType=INTEGER},
+      </if>
+      <if test="isNew != null">
+        is_new = #{isNew,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.xpz.entity.VillageManagement">
+    update village_management
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      village_id = #{villageId,jdbcType=BIGINT},
+      program_id = #{programId,jdbcType=BIGINT},
+      program_area = #{programArea,jdbcType=VARCHAR},
+      response_people = #{responsePeople,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      carmera_id = #{carmeraId,jdbcType=INTEGER},
+      is_delay = #{isDelay,jdbcType=INTEGER},
+      is_new = #{isNew,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
 </mapper>

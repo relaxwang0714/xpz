@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.xpz.mapper.DangjianFaciltyMapper">
+  <resultMap id="BaseResultMap" type="com.example.xpz.entity.DangjianFacilty">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="facility_type" jdbcType="VARCHAR" property="facilityType" />
+    <result column="facility_name" jdbcType="VARCHAR" property="facilityName" />
+    <result column="response_people" jdbcType="VARCHAR" property="responsePeople" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="village_id" jdbcType="INTEGER" property="villageId" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.xpz.entity.DangjianFaciltyWithBLOBs">
+    <result column="shiliang" jdbcType="LONGVARCHAR" property="shiliang" />
+    <result column="pano_url" jdbcType="LONGVARCHAR" property="panoUrl" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, create_time, update_time, facility_type, facility_name, response_people, phone, 
+    village_id
+  </sql>
+  <sql id="Blob_Column_List">
+    shiliang, pano_url
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.example.xpz.entity.DangjianFaciltyExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from dangjian_facilty
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.example.xpz.entity.DangjianFaciltyExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dangjian_facilty
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from dangjian_facilty
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from dangjian_facilty
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.xpz.entity.DangjianFaciltyExample">
+    delete from dangjian_facilty
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.xpz.entity.DangjianFaciltyWithBLOBs">
+    insert into dangjian_facilty (id, create_time, update_time, 
+      facility_type, facility_name, response_people, 
+      phone, village_id, shiliang, 
+      pano_url)
+    values (#{id,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{facilityType,jdbcType=VARCHAR}, #{facilityName,jdbcType=VARCHAR}, #{responsePeople,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{villageId,jdbcType=INTEGER}, #{shiliang,jdbcType=LONGVARCHAR}, 
+      #{panoUrl,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.xpz.entity.DangjianFaciltyWithBLOBs">
+    insert into dangjian_facilty
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="facilityType != null">
+        facility_type,
+      </if>
+      <if test="facilityName != null">
+        facility_name,
+      </if>
+      <if test="responsePeople != null">
+        response_people,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="villageId != null">
+        village_id,
+      </if>
+      <if test="shiliang != null">
+        shiliang,
+      </if>
+      <if test="panoUrl != null">
+        pano_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="facilityType != null">
+        #{facilityType,jdbcType=VARCHAR},
+      </if>
+      <if test="facilityName != null">
+        #{facilityName,jdbcType=VARCHAR},
+      </if>
+      <if test="responsePeople != null">
+        #{responsePeople,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="villageId != null">
+        #{villageId,jdbcType=INTEGER},
+      </if>
+      <if test="shiliang != null">
+        #{shiliang,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="panoUrl != null">
+        #{panoUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.xpz.entity.DangjianFaciltyExample" resultType="java.lang.Long">
+    select count(*) from dangjian_facilty
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update dangjian_facilty
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.facilityType != null">
+        facility_type = #{record.facilityType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.facilityName != null">
+        facility_name = #{record.facilityName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.responsePeople != null">
+        response_people = #{record.responsePeople,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null">
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.villageId != null">
+        village_id = #{record.villageId,jdbcType=INTEGER},
+      </if>
+      <if test="record.shiliang != null">
+        shiliang = #{record.shiliang,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.panoUrl != null">
+        pano_url = #{record.panoUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update dangjian_facilty
+    set id = #{record.id,jdbcType=BIGINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      facility_type = #{record.facilityType,jdbcType=VARCHAR},
+      facility_name = #{record.facilityName,jdbcType=VARCHAR},
+      response_people = #{record.responsePeople,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      village_id = #{record.villageId,jdbcType=INTEGER},
+      shiliang = #{record.shiliang,jdbcType=LONGVARCHAR},
+      pano_url = #{record.panoUrl,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update dangjian_facilty
+    set id = #{record.id,jdbcType=BIGINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      facility_type = #{record.facilityType,jdbcType=VARCHAR},
+      facility_name = #{record.facilityName,jdbcType=VARCHAR},
+      response_people = #{record.responsePeople,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      village_id = #{record.villageId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.xpz.entity.DangjianFaciltyWithBLOBs">
+    update dangjian_facilty
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="facilityType != null">
+        facility_type = #{facilityType,jdbcType=VARCHAR},
+      </if>
+      <if test="facilityName != null">
+        facility_name = #{facilityName,jdbcType=VARCHAR},
+      </if>
+      <if test="responsePeople != null">
+        response_people = #{responsePeople,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="villageId != null">
+        village_id = #{villageId,jdbcType=INTEGER},
+      </if>
+      <if test="shiliang != null">
+        shiliang = #{shiliang,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="panoUrl != null">
+        pano_url = #{panoUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.xpz.entity.DangjianFaciltyWithBLOBs">
+    update dangjian_facilty
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      facility_type = #{facilityType,jdbcType=VARCHAR},
+      facility_name = #{facilityName,jdbcType=VARCHAR},
+      response_people = #{responsePeople,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      village_id = #{villageId,jdbcType=INTEGER},
+      shiliang = #{shiliang,jdbcType=LONGVARCHAR},
+      pano_url = #{panoUrl,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.xpz.entity.DangjianFacilty">
+    update dangjian_facilty
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      facility_type = #{facilityType,jdbcType=VARCHAR},
+      facility_name = #{facilityName,jdbcType=VARCHAR},
+      response_people = #{responsePeople,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      village_id = #{villageId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

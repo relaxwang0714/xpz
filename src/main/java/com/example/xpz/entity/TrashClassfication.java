@@ -1,20 +1,21 @@
 package com.example.xpz.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import org.springframework.data.relational.core.sql.In;
-
 import java.util.Date;
 
 public class TrashClassfication {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date updateTime;
-    private Integer days;
-    private Integer red;
-    private Integer black;
+
+    private Long tudiLiuzhuan;
+
+    private Long tudiLiuzhuanRate;
+
     private Integer villageId;
+
+    private String year;
 
     public Integer getId() {
         return id;
@@ -40,28 +41,20 @@ public class TrashClassfication {
         this.updateTime = updateTime;
     }
 
-    public Integer getDays() {
-        return days;
+    public Long getTudiLiuzhuan() {
+        return tudiLiuzhuan;
     }
 
-    public void setDays(Integer days) {
-        this.days = days;
+    public void setTudiLiuzhuan(Long tudiLiuzhuan) {
+        this.tudiLiuzhuan = tudiLiuzhuan;
     }
 
-    public Integer getRed() {
-        return red;
+    public Long getTudiLiuzhuanRate() {
+        return tudiLiuzhuanRate;
     }
 
-    public void setRed(Integer red) {
-        this.red = red;
-    }
-
-    public Integer getBlack() {
-        return black;
-    }
-
-    public void setBlack(Integer black) {
-        this.black = black;
+    public void setTudiLiuzhuanRate(Long tudiLiuzhuanRate) {
+        this.tudiLiuzhuanRate = tudiLiuzhuanRate;
     }
 
     public Integer getVillageId() {
@@ -72,13 +65,11 @@ public class TrashClassfication {
         this.villageId = villageId;
     }
 
-    public TrashClassfication(Integer id, Date createTime, Date updateTime, Integer days, Integer red, Integer black, Integer villageId) {
-        this.id = id;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.days = days;
-        this.red = red;
-        this.black = black;
-        this.villageId = villageId;
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year == null ? null : year.trim();
     }
 }

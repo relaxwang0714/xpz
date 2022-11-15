@@ -1,24 +1,21 @@
 package com.example.xpz.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.util.Date;
 
 public class Meeting {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date updateTime;
 
     private String picUrl;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date meetingTime;
 
     private String meetingTitle;
 
-    private Integer villageId;
+    private String villageId;
 
     public Integer getId() {
         return id;
@@ -49,7 +46,7 @@ public class Meeting {
     }
 
     public void setPicUrl(String picUrl) {
-        this.picUrl = picUrl;
+        this.picUrl = picUrl == null ? null : picUrl.trim();
     }
 
     public Date getMeetingTime() {
@@ -65,24 +62,14 @@ public class Meeting {
     }
 
     public void setMeetingTitle(String meetingTitle) {
-        this.meetingTitle = meetingTitle;
+        this.meetingTitle = meetingTitle == null ? null : meetingTitle.trim();
     }
 
-    public Integer getVillageId() {
+    public String getVillageId() {
         return villageId;
     }
 
-    public void setVillageId(Integer villageId) {
-        this.villageId = villageId;
-    }
-
-    public Meeting(Integer id, Date createTime, Date updateTime, String picUrl, Date meetingTime, String meetingTitle, Integer villageId) {
-        this.id = id;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.picUrl = picUrl;
-        this.meetingTime = meetingTime;
-        this.meetingTitle = meetingTitle;
-        this.villageId = villageId;
+    public void setVillageId(String villageId) {
+        this.villageId = villageId == null ? null : villageId.trim();
     }
 }

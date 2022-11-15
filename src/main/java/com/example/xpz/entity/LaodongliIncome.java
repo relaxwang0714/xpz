@@ -1,94 +1,86 @@
 package com.example.xpz.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 import java.math.BigDecimal;
 import java.util.Date;
 
 public class LaodongliIncome {
-        private Integer id;
-        @JSONField(format="yyyy-MM-dd HH:mm:ss")
-        private Date createTime;
-        @JSONField(format="yyyy-MM-dd HH:mm:ss")
-        private Date updateTime;
-        private BigDecimal siyinIncome;
-        private BigDecimal qiyeIncome;
-        private BigDecimal nongcunIncome;
-        private Integer jidu;
-        private Integer villageId;
+    private Integer id;
 
-        public Integer getId() {
-                return id;
-        }
+    private Date createTime;
 
-        public void setId(Integer id) {
-                this.id = id;
-        }
+    private Date updateTime;
 
-        public Date getCreateTime() {
-                return createTime;
-        }
+    private BigDecimal siyinIncome;
 
-        public void setCreateTime(Date createTime) {
-                this.createTime = createTime;
-        }
+    private BigDecimal qiyeIncome;
 
-        public Date getUpdateTime() {
-                return updateTime;
-        }
+    private BigDecimal nongcunIncome;
 
-        public void setUpdateTime(Date updateTime) {
-                this.updateTime = updateTime;
-        }
+    private Integer jidu;
 
-        public BigDecimal getSiyinIncome() {
-                return siyinIncome;
-        }
+    private Integer villageId;
 
-        public void setSiyinIncome(BigDecimal siyinIncome) {
-                this.siyinIncome = siyinIncome;
-        }
+    public Integer getId() {
+        return id;
+    }
 
-        public BigDecimal getQiyeIncome() {
-                return qiyeIncome;
-        }
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-        public void setQiyeIncome(BigDecimal qiyeIncome) {
-                this.qiyeIncome = qiyeIncome;
-        }
+    public Date getCreateTime() {
+        return createTime;
+    }
 
-        public BigDecimal getNongcunIncome() {
-                return nongcunIncome;
-        }
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 
-        public void setNongcunIncome(BigDecimal nongcunIncome) {
-                this.nongcunIncome = nongcunIncome;
-        }
+    public Date getUpdateTime() {
+        return updateTime;
+    }
 
-        public Integer getJidu() {
-                return jidu;
-        }
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
 
-        public void setJidu(Integer jidu) {
-                this.jidu = jidu;
-        }
+    public BigDecimal getSiyinIncome() {
+        return siyinIncome;
+    }
 
-        public Integer getVillageId() {
-                return villageId;
-        }
+    public void setSiyinIncome(BigDecimal siyinIncome) {
+        this.siyinIncome = siyinIncome;
+    }
 
-        public void setVillageId(Integer villageId) {
-                this.villageId = villageId;
-        }
+    public BigDecimal getQiyeIncome() {
+        return qiyeIncome;
+    }
 
-        public LaodongliIncome(Integer id, Date createTime, Date updateTime, BigDecimal siyinIncome, BigDecimal qiyeIncome, BigDecimal nongcunIncome, Integer jidu, Integer villageId) {
-                this.id = id;
-                this.createTime = createTime;
-                this.updateTime = updateTime;
-                this.siyinIncome = siyinIncome;
-                this.qiyeIncome = qiyeIncome;
-                this.nongcunIncome = nongcunIncome;
-                this.jidu = jidu;
-                this.villageId = villageId;
-        }
+    public void setQiyeIncome(BigDecimal qiyeIncome) {
+        this.qiyeIncome = qiyeIncome;
+    }
+
+    public BigDecimal getNongcunIncome() {
+        return nongcunIncome;
+    }
+
+    public void setNongcunIncome(BigDecimal nongcunIncome) {
+        this.nongcunIncome = nongcunIncome;
+    }
+
+    public Integer getJidu() {
+        return jidu;
+    }
+
+    public void setJidu(Integer jidu) {
+        this.jidu = jidu;
+    }
+
+    public Integer getVillageId() {
+        return villageId;
+    }
+
+    public void setVillageId(Integer villageId) {
+        this.villageId = villageId;
+    }
 }

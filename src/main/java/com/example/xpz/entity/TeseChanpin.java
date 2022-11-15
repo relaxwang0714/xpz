@@ -4,10 +4,15 @@ import java.util.Date;
 
 public class TeseChanpin {
     private Integer id;
+
     private Date createTime;
+
     private Date updateTime;
+
     private String picUrl;
+
     private String picName;
+
     private Integer villageId;
 
     public Integer getId() {
@@ -39,7 +44,7 @@ public class TeseChanpin {
     }
 
     public void setPicUrl(String picUrl) {
-        this.picUrl = picUrl;
+        this.picUrl = picUrl == null ? null : picUrl.trim();
     }
 
     public String getPicName() {
@@ -47,7 +52,7 @@ public class TeseChanpin {
     }
 
     public void setPicName(String picName) {
-        this.picName = picName;
+        this.picName = picName == null ? null : picName.trim();
     }
 
     public Integer getVillageId() {
@@ -55,15 +60,6 @@ public class TeseChanpin {
     }
 
     public void setVillageId(Integer villageId) {
-        this.villageId = villageId;
-    }
-
-    public TeseChanpin(Integer id, Date createTime, Date updateTime, String picUrl, String picName, Integer villageId) {
-        this.id = id;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.picUrl = picUrl;
-        this.picName = picName;
         this.villageId = villageId;
     }
 }

@@ -1,20 +1,24 @@
 package com.example.xpz.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 import java.util.Date;
 
 public class ZichanKeshi {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date updateTime;
+
     private String fangwu;
+
     private String chengzuPeople;
+
     private String phone;
+
     private Integer area;
-    private Integer guishu;
+
+    private Integer isGuishu;
+
     private Integer villageId;
 
     public Integer getId() {
@@ -46,7 +50,7 @@ public class ZichanKeshi {
     }
 
     public void setFangwu(String fangwu) {
-        this.fangwu = fangwu;
+        this.fangwu = fangwu == null ? null : fangwu.trim();
     }
 
     public String getChengzuPeople() {
@@ -54,7 +58,7 @@ public class ZichanKeshi {
     }
 
     public void setChengzuPeople(String chengzuPeople) {
-        this.chengzuPeople = chengzuPeople;
+        this.chengzuPeople = chengzuPeople == null ? null : chengzuPeople.trim();
     }
 
     public String getPhone() {
@@ -62,7 +66,7 @@ public class ZichanKeshi {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public Integer getArea() {
@@ -73,12 +77,12 @@ public class ZichanKeshi {
         this.area = area;
     }
 
-    public Integer getGuishu() {
-        return guishu;
+    public Integer getIsGuishu() {
+        return isGuishu;
     }
 
-    public void setGuishu(Integer guishu) {
-        this.guishu = guishu;
+    public void setIsGuishu(Integer isGuishu) {
+        this.isGuishu = isGuishu;
     }
 
     public Integer getVillageId() {
@@ -86,18 +90,6 @@ public class ZichanKeshi {
     }
 
     public void setVillageId(Integer villageId) {
-        this.villageId = villageId;
-    }
-
-    public ZichanKeshi(Integer id, Date createTime, Date updateTime, String fangwu, String chengzuPeople, String phone, Integer area, Integer guishu, Integer villageId) {
-        this.id = id;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.fangwu = fangwu;
-        this.chengzuPeople = chengzuPeople;
-        this.phone = phone;
-        this.area = area;
-        this.guishu = guishu;
         this.villageId = villageId;
     }
 }

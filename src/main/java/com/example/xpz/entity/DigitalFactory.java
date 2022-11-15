@@ -1,14 +1,12 @@
 package com.example.xpz.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 import java.util.Date;
 
 public class DigitalFactory {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date updateTime;
 
     private String factoryName;
@@ -19,7 +17,7 @@ public class DigitalFactory {
 
     private String cameraUrl;
 
-    private Integer village_id;
+    private Integer villageId;
 
     private String shiliang;
 
@@ -52,7 +50,7 @@ public class DigitalFactory {
     }
 
     public void setFactoryName(String factoryName) {
-        this.factoryName = factoryName;
+        this.factoryName = factoryName == null ? null : factoryName.trim();
     }
 
     public String getResponsePeople() {
@@ -60,7 +58,7 @@ public class DigitalFactory {
     }
 
     public void setResponsePeople(String responsePeople) {
-        this.responsePeople = responsePeople;
+        this.responsePeople = responsePeople == null ? null : responsePeople.trim();
     }
 
     public String getPhone() {
@@ -68,7 +66,7 @@ public class DigitalFactory {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public String getCameraUrl() {
@@ -76,15 +74,15 @@ public class DigitalFactory {
     }
 
     public void setCameraUrl(String cameraUrl) {
-        this.cameraUrl = cameraUrl;
+        this.cameraUrl = cameraUrl == null ? null : cameraUrl.trim();
     }
 
-    public Integer getVillage_id() {
-        return village_id;
+    public Integer getVillageId() {
+        return villageId;
     }
 
-    public void setVillage_id(Integer village_id) {
-        this.village_id = village_id;
+    public void setVillageId(Integer villageId) {
+        this.villageId = villageId;
     }
 
     public String getShiliang() {
@@ -92,18 +90,6 @@ public class DigitalFactory {
     }
 
     public void setShiliang(String shiliang) {
-        this.shiliang = shiliang;
-    }
-
-    public DigitalFactory(Integer id, Date createTime, Date updateTime, String factoryName, String responsePeople, String phone, String cameraUrl, Integer village_id, String shiliang) {
-        this.id = id;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.factoryName = factoryName;
-        this.responsePeople = responsePeople;
-        this.phone = phone;
-        this.cameraUrl = cameraUrl;
-        this.village_id = village_id;
-        this.shiliang = shiliang;
+        this.shiliang = shiliang == null ? null : shiliang.trim();
     }
 }

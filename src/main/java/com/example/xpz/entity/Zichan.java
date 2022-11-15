@@ -1,17 +1,12 @@
 package com.example.xpz.entity;
 
-
-
-import com.alibaba.fastjson.annotation.JSONField;
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.util.Date;
 
 public class Zichan {
-    private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    private Long id;
+
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date updateTime;
 
     private Integer villageId;
@@ -26,19 +21,11 @@ public class Zichan {
 
     private Integer year;
 
-    public Integer getYear() {
-        return year;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
-    }
-
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -98,15 +85,11 @@ public class Zichan {
         this.averageIncomeRate = averageIncomeRate;
     }
 
-    public Zichan(Integer id, Date createTime, Date updateTime, Integer villageId, Integer collectiveIncome, Integer averageIncome, Integer collectiveIncomeRate, Integer averageIncomeRate, Integer year) {
-        this.id = id;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.villageId = villageId;
-        this.collectiveIncome = collectiveIncome;
-        this.averageIncome = averageIncome;
-        this.collectiveIncomeRate = collectiveIncomeRate;
-        this.averageIncomeRate = averageIncomeRate;
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
         this.year = year;
     }
 }

@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.xpz.mapper.DangyuanFazhanMapper">
+  <resultMap id="BaseResultMap" type="com.example.xpz.entity.DangyuanFazhan">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="village_id" jdbcType="INTEGER" property="villageId" />
+    <result column="in_party" jdbcType="INTEGER" property="inParty" />
+    <result column="jiji_people" jdbcType="INTEGER" property="jijiPeople" />
+    <result column="fazhan_people" jdbcType="INTEGER" property="fazhanPeople" />
+    <result column="yubei_people" jdbcType="INTEGER" property="yubeiPeople" />
+    <result column="year" jdbcType="INTEGER" property="year" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, create_time, update_time, village_id, in_party, jiji_people, fazhan_people, yubei_people, 
+    year
+  </sql>
+  <select id="selectByExample" parameterType="com.example.xpz.entity.DangyuanFazhanExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dangyuan_fazhan
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dangyuan_fazhan
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from dangyuan_fazhan
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.xpz.entity.DangyuanFazhanExample">
+    delete from dangyuan_fazhan
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.xpz.entity.DangyuanFazhan">
+    insert into dangyuan_fazhan (id, create_time, update_time, 
+      village_id, in_party, jiji_people, 
+      fazhan_people, yubei_people, year
+      )
+    values (#{id,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{villageId,jdbcType=INTEGER}, #{inParty,jdbcType=INTEGER}, #{jijiPeople,jdbcType=INTEGER}, 
+      #{fazhanPeople,jdbcType=INTEGER}, #{yubeiPeople,jdbcType=INTEGER}, #{year,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.xpz.entity.DangyuanFazhan">
+    insert into dangyuan_fazhan
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="villageId != null">
+        village_id,
+      </if>
+      <if test="inParty != null">
+        in_party,
+      </if>
+      <if test="jijiPeople != null">
+        jiji_people,
+      </if>
+      <if test="fazhanPeople != null">
+        fazhan_people,
+      </if>
+      <if test="yubeiPeople != null">
+        yubei_people,
+      </if>
+      <if test="year != null">
+        year,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="villageId != null">
+        #{villageId,jdbcType=INTEGER},
+      </if>
+      <if test="inParty != null">
+        #{inParty,jdbcType=INTEGER},
+      </if>
+      <if test="jijiPeople != null">
+        #{jijiPeople,jdbcType=INTEGER},
+      </if>
+      <if test="fazhanPeople != null">
+        #{fazhanPeople,jdbcType=INTEGER},
+      </if>
+      <if test="yubeiPeople != null">
+        #{yubeiPeople,jdbcType=INTEGER},
+      </if>
+      <if test="year != null">
+        #{year,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.xpz.entity.DangyuanFazhanExample" resultType="java.lang.Long">
+    select count(*) from dangyuan_fazhan
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update dangyuan_fazhan
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.villageId != null">
+        village_id = #{record.villageId,jdbcType=INTEGER},
+      </if>
+      <if test="record.inParty != null">
+        in_party = #{record.inParty,jdbcType=INTEGER},
+      </if>
+      <if test="record.jijiPeople != null">
+        jiji_people = #{record.jijiPeople,jdbcType=INTEGER},
+      </if>
+      <if test="record.fazhanPeople != null">
+        fazhan_people = #{record.fazhanPeople,jdbcType=INTEGER},
+      </if>
+      <if test="record.yubeiPeople != null">
+        yubei_people = #{record.yubeiPeople,jdbcType=INTEGER},
+      </if>
+      <if test="record.year != null">
+        year = #{record.year,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update dangyuan_fazhan
+    set id = #{record.id,jdbcType=BIGINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      village_id = #{record.villageId,jdbcType=INTEGER},
+      in_party = #{record.inParty,jdbcType=INTEGER},
+      jiji_people = #{record.jijiPeople,jdbcType=INTEGER},
+      fazhan_people = #{record.fazhanPeople,jdbcType=INTEGER},
+      yubei_people = #{record.yubeiPeople,jdbcType=INTEGER},
+      year = #{record.year,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.xpz.entity.DangyuanFazhan">
+    update dangyuan_fazhan
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="villageId != null">
+        village_id = #{villageId,jdbcType=INTEGER},
+      </if>
+      <if test="inParty != null">
+        in_party = #{inParty,jdbcType=INTEGER},
+      </if>
+      <if test="jijiPeople != null">
+        jiji_people = #{jijiPeople,jdbcType=INTEGER},
+      </if>
+      <if test="fazhanPeople != null">
+        fazhan_people = #{fazhanPeople,jdbcType=INTEGER},
+      </if>
+      <if test="yubeiPeople != null">
+        yubei_people = #{yubeiPeople,jdbcType=INTEGER},
+      </if>
+      <if test="year != null">
+        year = #{year,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.xpz.entity.DangyuanFazhan">
+    update dangyuan_fazhan
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      village_id = #{villageId,jdbcType=INTEGER},
+      in_party = #{inParty,jdbcType=INTEGER},
+      jiji_people = #{jijiPeople,jdbcType=INTEGER},
+      fazhan_people = #{fazhanPeople,jdbcType=INTEGER},
+      yubei_people = #{yubeiPeople,jdbcType=INTEGER},
+      year = #{year,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,21 +1,25 @@
 package com.example.xpz.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 import java.util.Date;
 
 public class WeishengBaojie {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date updateTime;
+
     private String name;
-    private Integer is_luzhang;
+
+    private Integer isLuzhang;
+
     private String phone;
-    private String traject;
+
     private Integer villageId;
+
     private String mc;
+
+    private String traject;
 
     public Integer getId() {
         return id;
@@ -46,15 +50,15 @@ public class WeishengBaojie {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
     }
 
-    public Integer getIs_luzhang() {
-        return is_luzhang;
+    public Integer getIsLuzhang() {
+        return isLuzhang;
     }
 
-    public void setIs_luzhang(Integer is_luzhang) {
-        this.is_luzhang = is_luzhang;
+    public void setIsLuzhang(Integer isLuzhang) {
+        this.isLuzhang = isLuzhang;
     }
 
     public String getPhone() {
@@ -62,15 +66,7 @@ public class WeishengBaojie {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public String getTraject() {
-        return traject;
-    }
-
-    public void setTraject(String traject) {
-        this.traject = traject;
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public Integer getVillageId() {
@@ -86,18 +82,14 @@ public class WeishengBaojie {
     }
 
     public void setMc(String mc) {
-        this.mc = mc;
+        this.mc = mc == null ? null : mc.trim();
     }
 
-    public WeishengBaojie(Integer id, Date createTime, Date updateTime, String name, Integer is_luzhang, String phone, String traject, Integer villageId, String mc) {
-        this.id = id;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.name = name;
-        this.is_luzhang = is_luzhang;
-        this.phone = phone;
-        this.traject = traject;
-        this.villageId = villageId;
-        this.mc = mc;
+    public String getTraject() {
+        return traject;
+    }
+
+    public void setTraject(String traject) {
+        this.traject = traject == null ? null : traject.trim();
     }
 }

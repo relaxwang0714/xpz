@@ -1,27 +1,258 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.xpz.mapper.QicaiTianyuanMapper">
-    <resultMap id="BaseResultMap" type="com.example.xpz.entity.QicaiTianyuan">
-        <constructor>
-            <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-            <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-            <arg column="tianyuan_name" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="zuowu_type" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="zhandi" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="camera_url" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <arg column="village_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-        </constructor>
-    </resultMap>
-    <sql id="Base_Column_List">
-        id, create_time,update_time,tianyuan_name,zuowu_type,zhandi,camera_url,village_id
-    </sql>
-    <select id="selectByVillageId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List" />
-        from qicai_tianyuan
-        where village_id = #{villageId,jdbcType=INTEGER}
-    </select>
-
-
+  <resultMap id="BaseResultMap" type="com.example.xpz.entity.QicaiTianyuan">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="tianyuan_name" jdbcType="VARCHAR" property="tianyuanName" />
+    <result column="zuowu_type" jdbcType="VARCHAR" property="zuowuType" />
+    <result column="zhandi" jdbcType="INTEGER" property="zhandi" />
+    <result column="camera_url" jdbcType="VARCHAR" property="cameraUrl" />
+    <result column="village_id" jdbcType="INTEGER" property="villageId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, create_time, update_time, tianyuan_name, zuowu_type, zhandi, camera_url, village_id
+  </sql>
+  <select id="selectByExample" parameterType="com.example.xpz.entity.QicaiTianyuanExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from qicai_tianyuan
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from qicai_tianyuan
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from qicai_tianyuan
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.xpz.entity.QicaiTianyuanExample">
+    delete from qicai_tianyuan
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.xpz.entity.QicaiTianyuan">
+    insert into qicai_tianyuan (id, create_time, update_time, 
+      tianyuan_name, zuowu_type, zhandi, 
+      camera_url, village_id)
+    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{tianyuanName,jdbcType=VARCHAR}, #{zuowuType,jdbcType=VARCHAR}, #{zhandi,jdbcType=INTEGER}, 
+      #{cameraUrl,jdbcType=VARCHAR}, #{villageId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.xpz.entity.QicaiTianyuan">
+    insert into qicai_tianyuan
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="tianyuanName != null">
+        tianyuan_name,
+      </if>
+      <if test="zuowuType != null">
+        zuowu_type,
+      </if>
+      <if test="zhandi != null">
+        zhandi,
+      </if>
+      <if test="cameraUrl != null">
+        camera_url,
+      </if>
+      <if test="villageId != null">
+        village_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tianyuanName != null">
+        #{tianyuanName,jdbcType=VARCHAR},
+      </if>
+      <if test="zuowuType != null">
+        #{zuowuType,jdbcType=VARCHAR},
+      </if>
+      <if test="zhandi != null">
+        #{zhandi,jdbcType=INTEGER},
+      </if>
+      <if test="cameraUrl != null">
+        #{cameraUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="villageId != null">
+        #{villageId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.xpz.entity.QicaiTianyuanExample" resultType="java.lang.Long">
+    select count(*) from qicai_tianyuan
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update qicai_tianyuan
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.tianyuanName != null">
+        tianyuan_name = #{record.tianyuanName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zuowuType != null">
+        zuowu_type = #{record.zuowuType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.zhandi != null">
+        zhandi = #{record.zhandi,jdbcType=INTEGER},
+      </if>
+      <if test="record.cameraUrl != null">
+        camera_url = #{record.cameraUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.villageId != null">
+        village_id = #{record.villageId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update qicai_tianyuan
+    set id = #{record.id,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      tianyuan_name = #{record.tianyuanName,jdbcType=VARCHAR},
+      zuowu_type = #{record.zuowuType,jdbcType=VARCHAR},
+      zhandi = #{record.zhandi,jdbcType=INTEGER},
+      camera_url = #{record.cameraUrl,jdbcType=VARCHAR},
+      village_id = #{record.villageId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.xpz.entity.QicaiTianyuan">
+    update qicai_tianyuan
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="tianyuanName != null">
+        tianyuan_name = #{tianyuanName,jdbcType=VARCHAR},
+      </if>
+      <if test="zuowuType != null">
+        zuowu_type = #{zuowuType,jdbcType=VARCHAR},
+      </if>
+      <if test="zhandi != null">
+        zhandi = #{zhandi,jdbcType=INTEGER},
+      </if>
+      <if test="cameraUrl != null">
+        camera_url = #{cameraUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="villageId != null">
+        village_id = #{villageId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.xpz.entity.QicaiTianyuan">
+    update qicai_tianyuan
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      tianyuan_name = #{tianyuanName,jdbcType=VARCHAR},
+      zuowu_type = #{zuowuType,jdbcType=VARCHAR},
+      zhandi = #{zhandi,jdbcType=INTEGER},
+      camera_url = #{cameraUrl,jdbcType=VARCHAR},
+      village_id = #{villageId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

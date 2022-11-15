@@ -1,19 +1,17 @@
 package com.example.xpz.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 import java.util.Date;
 
 public class QicaiTianyuan {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+
     private Date updateTime;
 
     private String tianyuanName;
 
-    private String zuowuTyep;
+    private String zuowuType;
 
     private Integer zhandi;
 
@@ -50,15 +48,15 @@ public class QicaiTianyuan {
     }
 
     public void setTianyuanName(String tianyuanName) {
-        this.tianyuanName = tianyuanName;
+        this.tianyuanName = tianyuanName == null ? null : tianyuanName.trim();
     }
 
-    public String getZuowuTyep() {
-        return zuowuTyep;
+    public String getZuowuType() {
+        return zuowuType;
     }
 
-    public void setZuowuTyep(String zuowuTyep) {
-        this.zuowuTyep = zuowuTyep;
+    public void setZuowuType(String zuowuType) {
+        this.zuowuType = zuowuType == null ? null : zuowuType.trim();
     }
 
     public Integer getZhandi() {
@@ -69,13 +67,12 @@ public class QicaiTianyuan {
         this.zhandi = zhandi;
     }
 
-
     public String getCameraUrl() {
         return cameraUrl;
     }
 
     public void setCameraUrl(String cameraUrl) {
-        this.cameraUrl = cameraUrl;
+        this.cameraUrl = cameraUrl == null ? null : cameraUrl.trim();
     }
 
     public Integer getVillageId() {
@@ -83,17 +80,6 @@ public class QicaiTianyuan {
     }
 
     public void setVillageId(Integer villageId) {
-        this.villageId = villageId;
-    }
-
-    public QicaiTianyuan(Integer id, Date createTime, Date updateTime, String tianyuanName, String zuowuTyep, Integer zhandi, String cameraUrl, Integer villageId) {
-        this.id = id;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.tianyuanName = tianyuanName;
-        this.zuowuTyep = zuowuTyep;
-        this.zhandi = zhandi;
-        this.cameraUrl = cameraUrl;
         this.villageId = villageId;
     }
 }

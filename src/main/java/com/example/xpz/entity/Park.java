@@ -1,15 +1,13 @@
 package com.example.xpz.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 import java.util.Date;
 
 public class Park {
-    private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    private Long id;
+
     private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
-    private Date upDateTime;
+
+    private Date updateTime;
 
     private String stopArea;
 
@@ -17,22 +15,21 @@ public class Park {
 
     private String phone;
 
-    private Integer leave;
+    private Integer lefts;
 
     private Integer villageId;
-
-    private String shiliang;
 
     private String parkName;
 
     private Integer amount;
 
+    private String shiliang;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -44,12 +41,44 @@ public class Park {
         this.createTime = createTime;
     }
 
-    public Date getUpDateTime() {
-        return upDateTime;
+    public Date getUpdateTime() {
+        return updateTime;
     }
 
-    public void setUpDateTime(Date upDateTime) {
-        this.upDateTime = upDateTime;
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public String getStopArea() {
+        return stopArea;
+    }
+
+    public void setStopArea(String stopArea) {
+        this.stopArea = stopArea == null ? null : stopArea.trim();
+    }
+
+    public String getResponsePeople() {
+        return responsePeople;
+    }
+
+    public void setResponsePeople(String responsePeople) {
+        this.responsePeople = responsePeople == null ? null : responsePeople.trim();
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
+    }
+
+    public Integer getLefts() {
+        return lefts;
+    }
+
+    public void setLefts(Integer lefts) {
+        this.lefts = lefts;
     }
 
     public Integer getVillageId() {
@@ -60,52 +89,12 @@ public class Park {
         this.villageId = villageId;
     }
 
-    public String getStopArea() {
-        return stopArea;
-    }
-
-    public void setStopArea(String stopArea) {
-        this.stopArea = stopArea;
-    }
-
-    public String getResponsePeople() {
-        return responsePeople;
-    }
-
-    public void setResponsePeople(String responsePeople) {
-        this.responsePeople = responsePeople;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public Integer getLeave() {
-        return leave;
-    }
-
-    public void setLeave(Integer leave) {
-        this.leave = leave;
-    }
-
-    public String getShiliang() {
-        return shiliang;
-    }
-
-    public void setShiliang(String shiliang) {
-        this.shiliang = shiliang;
-    }
-
     public String getParkName() {
         return parkName;
     }
 
     public void setParkName(String parkName) {
-        this.parkName = parkName;
+        this.parkName = parkName == null ? null : parkName.trim();
     }
 
     public Integer getAmount() {
@@ -116,17 +105,11 @@ public class Park {
         this.amount = amount;
     }
 
-    public Park(Integer id, Date createTime, Date upDateTime, String stopArea, String responsePeople, String phone, Integer leave, Integer villageId, String shiliang, String parkName, Integer amount) {
-        this.id = id;
-        this.createTime = createTime;
-        this.upDateTime = upDateTime;
-        this.stopArea = stopArea;
-        this.responsePeople = responsePeople;
-        this.phone = phone;
-        this.leave = leave;
-        this.villageId = villageId;
-        this.shiliang = shiliang;
-        this.parkName = parkName;
-        this.amount = amount;
+    public String getShiliang() {
+        return shiliang;
+    }
+
+    public void setShiliang(String shiliang) {
+        this.shiliang = shiliang == null ? null : shiliang.trim();
     }
 }

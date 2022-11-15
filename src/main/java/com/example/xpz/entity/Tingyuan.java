@@ -1,25 +1,25 @@
 package com.example.xpz.entity;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import org.springframework.data.relational.core.sql.In;
-
 import java.util.Date;
 
 public class Tingyuan {
     private Integer id;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
-    private Date createTime;
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
-    private Date updateTime;
-    private String huzhu;
-    private String phone;
-    private Integer star;
-    private String cameraUrl;
-    private Date age;
-    private String address;
-    private Integer villageId;
 
-    private String shiliang;
+    private Date createTime;
+
+    private Date updateTime;
+
+    private String huzhu;
+
+    private String phone;
+
+    private Integer star;
+
+    private Date age;
+
+    private String address;
+
+    private Integer villageId;
 
     private String hh;
 
@@ -52,7 +52,7 @@ public class Tingyuan {
     }
 
     public void setHuzhu(String huzhu) {
-        this.huzhu = huzhu;
+        this.huzhu = huzhu == null ? null : huzhu.trim();
     }
 
     public String getPhone() {
@@ -60,7 +60,7 @@ public class Tingyuan {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = phone == null ? null : phone.trim();
     }
 
     public Integer getStar() {
@@ -69,14 +69,6 @@ public class Tingyuan {
 
     public void setStar(Integer star) {
         this.star = star;
-    }
-
-    public String getCameraUrl() {
-        return cameraUrl;
-    }
-
-    public void setCameraUrl(String cameraUrl) {
-        this.cameraUrl = cameraUrl;
     }
 
     public Date getAge() {
@@ -92,7 +84,7 @@ public class Tingyuan {
     }
 
     public void setAddress(String address) {
-        this.address = address;
+        this.address = address == null ? null : address.trim();
     }
 
     public Integer getVillageId() {
@@ -103,34 +95,11 @@ public class Tingyuan {
         this.villageId = villageId;
     }
 
-    public String getShiliang() {
-        return shiliang;
-    }
-
-    public void setShiliang(String shiliang) {
-        this.shiliang = shiliang;
-    }
-
     public String getHh() {
         return hh;
     }
 
     public void setHh(String hh) {
-        this.hh = hh;
-    }
-
-    public Tingyuan(Integer id, Date createTime, Date updateTime, String huzhu, String phone, Integer star, String cameraUrl, Date age, String address, Integer villageId, String shiliang, String hh) {
-        this.id = id;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-        this.huzhu = huzhu;
-        this.phone = phone;
-        this.star = star;
-        this.cameraUrl = cameraUrl;
-        this.age = age;
-        this.address = address;
-        this.villageId = villageId;
-        this.shiliang = shiliang;
-        this.hh = hh;
+        this.hh = hh == null ? null : hh.trim();
     }
 }
