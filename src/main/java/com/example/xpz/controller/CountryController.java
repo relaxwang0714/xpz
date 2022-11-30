@@ -64,7 +64,7 @@ public class CountryController {
     }
     @GetMapping("/culture")
     public String cultureSelect(HttpServletRequest request) {
-        return countryService.selectPlaceByVillageId(1);
+        return countryService.selectVillageCulture();
     }
 //    @PutMapping("/culture/{id}")
 //    public String cultureUpdate(HttpServletRequest request,@PathVariable("id") Long id) {

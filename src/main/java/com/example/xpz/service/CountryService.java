@@ -17,8 +17,7 @@ public class CountryService {
     @Autowired
     PeopleStructureMapper peopleStructureMapper;
     @Autowired
-    PlaceMapper placeMapper;
-
+    VillageCultureMapper villageCultureMapper;
     @Autowired
     DigitalInfrastructureMapper digitalInfrastructureMapper;
 
@@ -206,9 +205,44 @@ public class CountryService {
         }
     }
 
-    public String selectPlaceByVillageId(int id){
-        List<Place> placeList = placeMapper.selectByVillageId(id);
-        returnmsg.setData(placeList);
+    public String selectVillageCulture(){
+        VillageCultureExample example = new VillageCultureExample();
+        VillageCultureExample.Criteria criteria = example.createCriteria();
+        List<VillageCulture> list = villageCultureMapper.selectByExample(example);
+        returnmsg.setData(list);
+        returnmsg.setCode("0");
+        returnmsg.setMsg("成功");
+        return returnmsg.toString();
+    }
+    public String updateVillageCulture(Long id,VillageCulture villageCulture){
+        VillageCultureExample example = new VillageCultureExample();
+        VillageCultureExample.Criteria criteria = example.createCriteria();
+        criteria.andIdEqualTo(id);
+        int res = villageCultureMapper.updateByExampleSelective(villageCulture,example);
+        if(res==1){
+            returnmsg.setCode("0");
+            returnmsg.setMsg("成功");
+        }
+        else{
+            returnmsg.setCode("0");
+            returnmsg.setMsg("失败");
+        }
+        return returnmsg.toString();
+    }
+    public String insertVillageCulture(){
+        VillageCultureExample example = new VillageCultureExample();
+        VillageCultureExample.Criteria criteria = example.createCriteria();
+        List<VillageCulture> list = villageCultureMapper.selectByExample(example);
+        returnmsg.setData(list);
+        returnmsg.setCode("0");
+        returnmsg.setMsg("成功");
+        return returnmsg.toString();
+    }
+    public String deleteVillageCulture(){
+        VillageCultureExample example = new VillageCultureExample();
+        VillageCultureExample.Criteria criteria = example.createCriteria();
+        List<VillageCulture> list = villageCultureMapper.selectByExample(example);
+        returnmsg.setData(list);
         returnmsg.setCode("0");
         returnmsg.setMsg("成功");
         return returnmsg.toString();
