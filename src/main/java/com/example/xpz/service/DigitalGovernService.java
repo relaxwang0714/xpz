@@ -25,7 +25,7 @@ public class DigitalGovernService {
     public String selectTingyuan(){
         TingyuanExample tingyuanExample = new TingyuanExample();
         TingyuanExample.Criteria criteria = tingyuanExample.createCriteria();
-        List<Tingyuan> tingyuanList = tingyuanMapper.selectByExample(tingyuanExample);
+        List<TingyuanWithBLOBs> tingyuanList = tingyuanMapper.selectByExampleWithBLOBs(tingyuanExample);
         returnMsg.setData(tingyuanList);
         returnMsg.setCode("0");
         returnMsg.setMsg("成功");
@@ -106,7 +106,7 @@ public class DigitalGovernService {
         WeishengBaojieExample weishengBaojieExample = new WeishengBaojieExample();
         WeishengBaojieExample.Criteria criteria = weishengBaojieExample.createCriteria();
         criteria.andIsLuzhangEqualTo(isLuzhang);
-        List<WeishengBaojie> weishengBaojieList = weishengBaojieMapper.selectByExample(weishengBaojieExample);
+        List<WeishengBaojie> weishengBaojieList = weishengBaojieMapper.selectByExampleWithBLOBs(weishengBaojieExample);
         returnMsg.setData(weishengBaojieList);
         returnMsg.setCode("0");
         returnMsg.setMsg("成功");

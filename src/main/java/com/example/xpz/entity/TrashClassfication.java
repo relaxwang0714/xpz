@@ -9,13 +9,13 @@ public class TrashClassfication {
 
     private Date updateTime;
 
-    private Long tudiLiuzhuan;
+    private Integer days;
 
-    private Long tudiLiuzhuanRate;
+    private Integer red;
+
+    private Integer black;
 
     private Integer villageId;
-
-    private String year;
 
     public Integer getId() {
         return id;
@@ -41,20 +41,28 @@ public class TrashClassfication {
         this.updateTime = updateTime;
     }
 
-    public Long getTudiLiuzhuan() {
-        return tudiLiuzhuan;
+    public Integer getDays() {
+        return days;
     }
 
-    public void setTudiLiuzhuan(Long tudiLiuzhuan) {
-        this.tudiLiuzhuan = tudiLiuzhuan;
+    public void setDays(Integer days) {
+        this.days = days;
     }
 
-    public Long getTudiLiuzhuanRate() {
-        return tudiLiuzhuanRate;
+    public Integer getRed() {
+        return red;
     }
 
-    public void setTudiLiuzhuanRate(Long tudiLiuzhuanRate) {
-        this.tudiLiuzhuanRate = tudiLiuzhuanRate;
+    public void setRed(Integer red) {
+        this.red = red;
+    }
+
+    public Integer getBlack() {
+        return black;
+    }
+
+    public void setBlack(Integer black) {
+        this.black = black;
     }
 
     public Integer getVillageId() {
@@ -63,13 +71,5 @@ public class TrashClassfication {
 
     public void setVillageId(Integer villageId) {
         this.villageId = villageId;
-    }
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year == null ? null : year.trim();
     }
 }

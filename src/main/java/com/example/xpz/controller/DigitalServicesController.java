@@ -14,19 +14,19 @@ public class DigitalServicesController {
     @Autowired
     DigitalServicesService digitalServicesService;
 
-    @GetMapping("/dangan")
+    @GetMapping("/dangAn")
     public String danganSelect(HttpServletRequest request){
         return digitalServicesService.selectDangan();
     }
-    @PutMapping("/dangan/{id}")
+    @PutMapping("/dangAn/{id}")
     public String danganUpdate(HttpServletRequest request, @PathVariable("id")Integer id, @RequestBody Dangan dangan){
         return digitalServicesService.updateDangan(id, dangan);
     }
-    @PostMapping("/dangan")
+    @PostMapping("/dangAn")
     public String danganInsert(HttpServletRequest request,@RequestBody Dangan dangan){
         return digitalServicesService.insertDangan(dangan);
     }
-    @DeleteMapping("/dangan/{id}")
+    @DeleteMapping("/dangAn/{id}")
     public String danganDelete(HttpServletRequest request,@PathVariable("id")Integer id){
         return digitalServicesService.deleteDangan(id);
     }

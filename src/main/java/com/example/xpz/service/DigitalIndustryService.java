@@ -28,7 +28,7 @@ public class DigitalIndustryService {
     public String selectDigitalFactory(){
         DigitalFactoryExample digitalFactoryExample = new DigitalFactoryExample();
         DigitalFactoryExample.Criteria criteria = digitalFactoryExample.createCriteria();
-        List<DigitalFactory> digitalFactoryList = digitalFactoryMapper.selectByExample(digitalFactoryExample);
+        List<DigitalFactory> digitalFactoryList = digitalFactoryMapper.selectByExampleWithBLOBs(digitalFactoryExample);
         returnMsg.setData(digitalFactoryList);
         returnMsg.setCode("0");
         returnMsg.setMsg("成功");
@@ -188,7 +188,7 @@ public class DigitalIndustryService {
     public String selectMimianJidi(){
         MimianJidiExample mimianJidiExample = new MimianJidiExample();
         MimianJidiExample.Criteria criteria = mimianJidiExample.createCriteria();
-        List<MimianJidi> mimianJidiList = mimianJidiMapper.selectByExample(mimianJidiExample);
+        List<MimianJidi> mimianJidiList = mimianJidiMapper.selectByExampleWithBLOBs(mimianJidiExample);
         returnMsg.setData(mimianJidiList);
         returnMsg.setCode("0");
         returnMsg.setMsg("成功");

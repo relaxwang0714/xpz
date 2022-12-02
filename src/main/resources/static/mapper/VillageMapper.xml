@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.xpz.mapper.TrashClassficationMapper">
-  <resultMap id="BaseResultMap" type="com.example.xpz.entity.TrashClassfication">
-    <id column="id" jdbcType="INTEGER" property="id" />
+<mapper namespace="com.example.xpz.mapper.VillageMapper">
+  <resultMap id="BaseResultMap" type="com.example.xpz.entity.Village">
+    <id column="id" jdbcType="BIGINT" property="id" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
-    <result column="days" jdbcType="INTEGER" property="days" />
-    <result column="red" jdbcType="INTEGER" property="red" />
-    <result column="black" jdbcType="INTEGER" property="black" />
-    <result column="village_id" jdbcType="INTEGER" property="villageId" />
+    <result column="profile" jdbcType="VARCHAR" property="profile" />
+    <result column="collective_income" jdbcType="DECIMAL" property="collectiveIncome" />
+    <result column="average_income" jdbcType="DECIMAL" property="averageIncome" />
+    <result column="average_income_rate" jdbcType="DECIMAL" property="averageIncomeRate" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,15 +69,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, create_time, update_time, days, red, black, village_id
+    id, create_time, update_time, profile, collective_income, average_income, average_income_rate
   </sql>
-  <select id="selectByExample" parameterType="com.example.xpz.entity.TrashClassficationExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.example.xpz.entity.VillageExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from trash_classfication
+    from village
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -85,32 +85,32 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from trash_classfication
-    where id = #{id,jdbcType=INTEGER}
+    from village
+    where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from trash_classfication
-    where id = #{id,jdbcType=INTEGER}
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from village
+    where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.example.xpz.entity.TrashClassficationExample">
-    delete from trash_classfication
+  <delete id="deleteByExample" parameterType="com.example.xpz.entity.VillageExample">
+    delete from village
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.example.xpz.entity.TrashClassfication">
-    insert into trash_classfication (id, create_time, update_time, 
-      days, red, black, village_id
-      )
-    values (#{id,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{days,jdbcType=INTEGER}, #{red,jdbcType=INTEGER}, #{black,jdbcType=INTEGER}, #{villageId,jdbcType=INTEGER}
-      )
+  <insert id="insert" parameterType="com.example.xpz.entity.Village">
+    insert into village (id, create_time, update_time, 
+      profile, collective_income, average_income, 
+      average_income_rate)
+    values (#{id,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{profile,jdbcType=VARCHAR}, #{collectiveIncome,jdbcType=DECIMAL}, #{averageIncome,jdbcType=DECIMAL}, 
+      #{averageIncomeRate,jdbcType=DECIMAL})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.xpz.entity.TrashClassfication">
-    insert into trash_classfication
+  <insert id="insertSelective" parameterType="com.example.xpz.entity.Village">
+    insert into village
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -121,22 +121,22 @@
       <if test="updateTime != null">
         update_time,
       </if>
-      <if test="days != null">
-        days,
+      <if test="profile != null">
+        profile,
       </if>
-      <if test="red != null">
-        red,
+      <if test="collectiveIncome != null">
+        collective_income,
       </if>
-      <if test="black != null">
-        black,
+      <if test="averageIncome != null">
+        average_income,
       </if>
-      <if test="villageId != null">
-        village_id,
+      <if test="averageIncomeRate != null">
+        average_income_rate,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="createTime != null">
         #{createTime,jdbcType=TIMESTAMP},
@@ -144,31 +144,31 @@
       <if test="updateTime != null">
         #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="days != null">
-        #{days,jdbcType=INTEGER},
+      <if test="profile != null">
+        #{profile,jdbcType=VARCHAR},
       </if>
-      <if test="red != null">
-        #{red,jdbcType=INTEGER},
+      <if test="collectiveIncome != null">
+        #{collectiveIncome,jdbcType=DECIMAL},
       </if>
-      <if test="black != null">
-        #{black,jdbcType=INTEGER},
+      <if test="averageIncome != null">
+        #{averageIncome,jdbcType=DECIMAL},
       </if>
-      <if test="villageId != null">
-        #{villageId,jdbcType=INTEGER},
+      <if test="averageIncomeRate != null">
+        #{averageIncomeRate,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.example.xpz.entity.TrashClassficationExample" resultType="java.lang.Long">
-    select count(*) from trash_classfication
+  <select id="countByExample" parameterType="com.example.xpz.entity.VillageExample" resultType="java.lang.Long">
+    select count(*) from village
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update trash_classfication
+    update village
     <set>
       <if test="record.id != null">
-        id = #{record.id,jdbcType=INTEGER},
+        id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -176,17 +176,17 @@
       <if test="record.updateTime != null">
         update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="record.days != null">
-        days = #{record.days,jdbcType=INTEGER},
+      <if test="record.profile != null">
+        profile = #{record.profile,jdbcType=VARCHAR},
       </if>
-      <if test="record.red != null">
-        red = #{record.red,jdbcType=INTEGER},
+      <if test="record.collectiveIncome != null">
+        collective_income = #{record.collectiveIncome,jdbcType=DECIMAL},
       </if>
-      <if test="record.black != null">
-        black = #{record.black,jdbcType=INTEGER},
+      <if test="record.averageIncome != null">
+        average_income = #{record.averageIncome,jdbcType=DECIMAL},
       </if>
-      <if test="record.villageId != null">
-        village_id = #{record.villageId,jdbcType=INTEGER},
+      <if test="record.averageIncomeRate != null">
+        average_income_rate = #{record.averageIncomeRate,jdbcType=DECIMAL},
       </if>
     </set>
     <if test="_parameter != null">
@@ -194,20 +194,20 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update trash_classfication
-    set id = #{record.id,jdbcType=INTEGER},
+    update village
+    set id = #{record.id,jdbcType=BIGINT},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      days = #{record.days,jdbcType=INTEGER},
-      red = #{record.red,jdbcType=INTEGER},
-      black = #{record.black,jdbcType=INTEGER},
-      village_id = #{record.villageId,jdbcType=INTEGER}
+      profile = #{record.profile,jdbcType=VARCHAR},
+      collective_income = #{record.collectiveIncome,jdbcType=DECIMAL},
+      average_income = #{record.averageIncome,jdbcType=DECIMAL},
+      average_income_rate = #{record.averageIncomeRate,jdbcType=DECIMAL}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.xpz.entity.TrashClassfication">
-    update trash_classfication
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.xpz.entity.Village">
+    update village
     <set>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -215,29 +215,29 @@
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="days != null">
-        days = #{days,jdbcType=INTEGER},
+      <if test="profile != null">
+        profile = #{profile,jdbcType=VARCHAR},
       </if>
-      <if test="red != null">
-        red = #{red,jdbcType=INTEGER},
+      <if test="collectiveIncome != null">
+        collective_income = #{collectiveIncome,jdbcType=DECIMAL},
       </if>
-      <if test="black != null">
-        black = #{black,jdbcType=INTEGER},
+      <if test="averageIncome != null">
+        average_income = #{averageIncome,jdbcType=DECIMAL},
       </if>
-      <if test="villageId != null">
-        village_id = #{villageId,jdbcType=INTEGER},
+      <if test="averageIncomeRate != null">
+        average_income_rate = #{averageIncomeRate,jdbcType=DECIMAL},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.xpz.entity.TrashClassfication">
-    update trash_classfication
+  <update id="updateByPrimaryKey" parameterType="com.example.xpz.entity.Village">
+    update village
     set create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      days = #{days,jdbcType=INTEGER},
-      red = #{red,jdbcType=INTEGER},
-      black = #{black,jdbcType=INTEGER},
-      village_id = #{villageId,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+      profile = #{profile,jdbcType=VARCHAR},
+      collective_income = #{collectiveIncome,jdbcType=DECIMAL},
+      average_income = #{averageIncome,jdbcType=DECIMAL},
+      average_income_rate = #{averageIncomeRate,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

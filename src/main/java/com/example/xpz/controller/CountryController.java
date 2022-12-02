@@ -16,7 +16,7 @@ public class CountryController {
     CountryService countryService;
     @GetMapping("/overview")
     public String overviewSelect(HttpServletRequest request) {
-        return countryService.selectByPrimaryKey(1);
+        return countryService.selectVillage(1L);
 }
 //    @PostMapping("/overview")
 //    public String overviewInsert(HttpServletRequest request) {
@@ -66,13 +66,13 @@ public class CountryController {
     public String cultureSelect(HttpServletRequest request) {
         return countryService.selectVillageCulture();
     }
-//    @PutMapping("/culture/{id}")
-//    public String cultureUpdate(HttpServletRequest request,@PathVariable("id") Long id) {
-//        return countryService.update
-//    }
+    @PutMapping("/culture/{id}")
+    public String cultureUpdate(HttpServletRequest request,@PathVariable("id") Long id,@RequestBody VillageCulture villageCulture) {
+        return countryService.updateVillageCulture(id,villageCulture);
+    }
 //    @PostMapping("/culture")
 //    public String cultureInsert(HttpServletRequest request) {
-//        return countryService.selectPlaceByVillageId(1);
+//        return countryService.insertVillageCulture();
 //    }
 //    @DeleteMapping("/culture")
 //    public String cultureDelete(HttpServletRequest request) {

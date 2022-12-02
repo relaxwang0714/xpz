@@ -1,28 +1,276 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.xpz.mapper.PeopleStructureMapper">
-    <resultMap id="BaseResultMap" type="com.example.xpz.entity.PeopleStructure">
-        <constructor>
-            <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-            <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
-            <arg column="zero_eighteen" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="nighteen_thirtyfive" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="thirtyfive_sixtyfive" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="sixtyfive_eightyfive" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="over_eightfive" javaType="java.lang.Integer" jdbcType="INTEGER" />
-            <arg column="village_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-        </constructor>
-    </resultMap>
-    <sql id="Base_Column_List">
-        id, create_time,update_time,zero_eighteen,nighteen_thirtyfive,thirtyfive_sixtyfive,sixtyfive_eightyfive,over_eightfive,village_id
-    </sql>
-    <select id="selectByVillageId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-        select
-        <include refid="Base_Column_List" />
-        from people_structure
-        where village_id = #{villageId,jdbcType=INTEGER}
-    </select>
-
-
+  <resultMap id="BaseResultMap" type="com.example.xpz.entity.PeopleStructure">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="zero_eighteen" jdbcType="INTEGER" property="zeroEighteen" />
+    <result column="nighteen_thirtyfive" jdbcType="INTEGER" property="nighteenThirtyfive" />
+    <result column="thirtyfive_sixtyfive" jdbcType="INTEGER" property="thirtyfiveSixtyfive" />
+    <result column="sixtyfive_eightyfive" jdbcType="INTEGER" property="sixtyfiveEightyfive" />
+    <result column="over_eightfive" jdbcType="INTEGER" property="overEightfive" />
+    <result column="village_id" jdbcType="INTEGER" property="villageId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, create_time, update_time, zero_eighteen, nighteen_thirtyfive, thirtyfive_sixtyfive, 
+    sixtyfive_eightyfive, over_eightfive, village_id
+  </sql>
+  <select id="selectByExample" parameterType="com.example.xpz.entity.PeopleStructureExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from people_structure
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from people_structure
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from people_structure
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.xpz.entity.PeopleStructureExample">
+    delete from people_structure
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.xpz.entity.PeopleStructure">
+    insert into people_structure (id, create_time, update_time, 
+      zero_eighteen, nighteen_thirtyfive, thirtyfive_sixtyfive, 
+      sixtyfive_eightyfive, over_eightfive, village_id
+      )
+    values (#{id,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{zeroEighteen,jdbcType=INTEGER}, #{nighteenThirtyfive,jdbcType=INTEGER}, #{thirtyfiveSixtyfive,jdbcType=INTEGER}, 
+      #{sixtyfiveEightyfive,jdbcType=INTEGER}, #{overEightfive,jdbcType=INTEGER}, #{villageId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.xpz.entity.PeopleStructure">
+    insert into people_structure
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="zeroEighteen != null">
+        zero_eighteen,
+      </if>
+      <if test="nighteenThirtyfive != null">
+        nighteen_thirtyfive,
+      </if>
+      <if test="thirtyfiveSixtyfive != null">
+        thirtyfive_sixtyfive,
+      </if>
+      <if test="sixtyfiveEightyfive != null">
+        sixtyfive_eightyfive,
+      </if>
+      <if test="overEightfive != null">
+        over_eightfive,
+      </if>
+      <if test="villageId != null">
+        village_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zeroEighteen != null">
+        #{zeroEighteen,jdbcType=INTEGER},
+      </if>
+      <if test="nighteenThirtyfive != null">
+        #{nighteenThirtyfive,jdbcType=INTEGER},
+      </if>
+      <if test="thirtyfiveSixtyfive != null">
+        #{thirtyfiveSixtyfive,jdbcType=INTEGER},
+      </if>
+      <if test="sixtyfiveEightyfive != null">
+        #{sixtyfiveEightyfive,jdbcType=INTEGER},
+      </if>
+      <if test="overEightfive != null">
+        #{overEightfive,jdbcType=INTEGER},
+      </if>
+      <if test="villageId != null">
+        #{villageId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.xpz.entity.PeopleStructureExample" resultType="java.lang.Long">
+    select count(*) from people_structure
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update people_structure
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.zeroEighteen != null">
+        zero_eighteen = #{record.zeroEighteen,jdbcType=INTEGER},
+      </if>
+      <if test="record.nighteenThirtyfive != null">
+        nighteen_thirtyfive = #{record.nighteenThirtyfive,jdbcType=INTEGER},
+      </if>
+      <if test="record.thirtyfiveSixtyfive != null">
+        thirtyfive_sixtyfive = #{record.thirtyfiveSixtyfive,jdbcType=INTEGER},
+      </if>
+      <if test="record.sixtyfiveEightyfive != null">
+        sixtyfive_eightyfive = #{record.sixtyfiveEightyfive,jdbcType=INTEGER},
+      </if>
+      <if test="record.overEightfive != null">
+        over_eightfive = #{record.overEightfive,jdbcType=INTEGER},
+      </if>
+      <if test="record.villageId != null">
+        village_id = #{record.villageId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update people_structure
+    set id = #{record.id,jdbcType=BIGINT},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      zero_eighteen = #{record.zeroEighteen,jdbcType=INTEGER},
+      nighteen_thirtyfive = #{record.nighteenThirtyfive,jdbcType=INTEGER},
+      thirtyfive_sixtyfive = #{record.thirtyfiveSixtyfive,jdbcType=INTEGER},
+      sixtyfive_eightyfive = #{record.sixtyfiveEightyfive,jdbcType=INTEGER},
+      over_eightfive = #{record.overEightfive,jdbcType=INTEGER},
+      village_id = #{record.villageId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.xpz.entity.PeopleStructure">
+    update people_structure
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="zeroEighteen != null">
+        zero_eighteen = #{zeroEighteen,jdbcType=INTEGER},
+      </if>
+      <if test="nighteenThirtyfive != null">
+        nighteen_thirtyfive = #{nighteenThirtyfive,jdbcType=INTEGER},
+      </if>
+      <if test="thirtyfiveSixtyfive != null">
+        thirtyfive_sixtyfive = #{thirtyfiveSixtyfive,jdbcType=INTEGER},
+      </if>
+      <if test="sixtyfiveEightyfive != null">
+        sixtyfive_eightyfive = #{sixtyfiveEightyfive,jdbcType=INTEGER},
+      </if>
+      <if test="overEightfive != null">
+        over_eightfive = #{overEightfive,jdbcType=INTEGER},
+      </if>
+      <if test="villageId != null">
+        village_id = #{villageId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.xpz.entity.PeopleStructure">
+    update people_structure
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      zero_eighteen = #{zeroEighteen,jdbcType=INTEGER},
+      nighteen_thirtyfive = #{nighteenThirtyfive,jdbcType=INTEGER},
+      thirtyfive_sixtyfive = #{thirtyfiveSixtyfive,jdbcType=INTEGER},
+      sixtyfive_eightyfive = #{sixtyfiveEightyfive,jdbcType=INTEGER},
+      over_eightfive = #{overEightfive,jdbcType=INTEGER},
+      village_id = #{villageId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
 </mapper>

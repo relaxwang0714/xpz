@@ -46,7 +46,8 @@
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
-        <table tableName="construction_list" domainObjectName="ConstructionList"/>
+        <table tableName="village" domainObjectName="Village"/>
+<!--        <table tableName="construction_list" domainObjectName="ConstructionList"/>-->
 <!--            <table tableName="dangyuan_fazhan" domainObjectName="DangyuanFazhan"/>-->
 <!--            <table tableName="dangyuan_fengcai" domainObjectName="DangyuanFengcai"/>-->
 <!--        <table tableName="dangjian_facilty" domainObjectName="DangjianFacilty"/>-->
@@ -83,7 +84,7 @@
 <!--        <table tableName="tese_chanpin" domainObjectName="TeseChanpin"/>-->
 <!--        <table tableName="tingyuan" domainObjectName="Tingyuan"/>-->
 <!--        <table tableName="trash" domainObjectName="Trash"/>-->
-<!--        <table tableName="trash_classfication" domainObjectName="TrashClassfication"/>-->
+        <table tableName="trash_classfication" domainObjectName="TrashClassfication"/>
 <!--        <table tableName="tudi_liuzhuan" domainObjectName="TrashClassfication"/>-->
 <!--        <table tableName="country" domainObjectName="Country"/>-->
 <!--        <table tableName="village_culture" domainObjectName="VillageCulture"/>-->

@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class TrashClassficationExample {
+public class VillageExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public TrashClassficationExample() {
+    public VillageExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -115,52 +115,52 @@ public class TrashClassficationExample {
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(Integer value) {
+        public Criteria andIdEqualTo(Long value) {
             addCriterion("id =", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(Integer value) {
+        public Criteria andIdNotEqualTo(Long value) {
             addCriterion("id <>", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(Integer value) {
+        public Criteria andIdGreaterThan(Long value) {
             addCriterion("id >", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(Integer value) {
+        public Criteria andIdGreaterThanOrEqualTo(Long value) {
             addCriterion("id >=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(Integer value) {
+        public Criteria andIdLessThan(Long value) {
             addCriterion("id <", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(Integer value) {
+        public Criteria andIdLessThanOrEqualTo(Long value) {
             addCriterion("id <=", value, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<Integer> values) {
+        public Criteria andIdIn(List<Long> values) {
             addCriterion("id in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<Integer> values) {
+        public Criteria andIdNotIn(List<Long> values) {
             addCriterion("id not in", values, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(Integer value1, Integer value2) {
+        public Criteria andIdBetween(Long value1, Long value2) {
             addCriterion("id between", value1, value2, "id");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(Integer value1, Integer value2) {
+        public Criteria andIdNotBetween(Long value1, Long value2) {
             addCriterion("id not between", value1, value2, "id");
             return (Criteria) this;
         }
@@ -285,243 +285,253 @@ public class TrashClassficationExample {
             return (Criteria) this;
         }
 
-        public Criteria andDaysIsNull() {
-            addCriterion("days is null");
+        public Criteria andProfileIsNull() {
+            addCriterion("profile is null");
             return (Criteria) this;
         }
 
-        public Criteria andDaysIsNotNull() {
-            addCriterion("days is not null");
+        public Criteria andProfileIsNotNull() {
+            addCriterion("profile is not null");
             return (Criteria) this;
         }
 
-        public Criteria andDaysEqualTo(Integer value) {
-            addCriterion("days =", value, "days");
+        public Criteria andProfileEqualTo(String value) {
+            addCriterion("profile =", value, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andDaysNotEqualTo(Integer value) {
-            addCriterion("days <>", value, "days");
+        public Criteria andProfileNotEqualTo(String value) {
+            addCriterion("profile <>", value, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andDaysGreaterThan(Integer value) {
-            addCriterion("days >", value, "days");
+        public Criteria andProfileGreaterThan(String value) {
+            addCriterion("profile >", value, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andDaysGreaterThanOrEqualTo(Integer value) {
-            addCriterion("days >=", value, "days");
+        public Criteria andProfileGreaterThanOrEqualTo(String value) {
+            addCriterion("profile >=", value, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andDaysLessThan(Integer value) {
-            addCriterion("days <", value, "days");
+        public Criteria andProfileLessThan(String value) {
+            addCriterion("profile <", value, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andDaysLessThanOrEqualTo(Integer value) {
-            addCriterion("days <=", value, "days");
+        public Criteria andProfileLessThanOrEqualTo(String value) {
+            addCriterion("profile <=", value, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andDaysIn(List<Integer> values) {
-            addCriterion("days in", values, "days");
+        public Criteria andProfileLike(String value) {
+            addCriterion("profile like", value, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andDaysNotIn(List<Integer> values) {
-            addCriterion("days not in", values, "days");
+        public Criteria andProfileNotLike(String value) {
+            addCriterion("profile not like", value, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andDaysBetween(Integer value1, Integer value2) {
-            addCriterion("days between", value1, value2, "days");
+        public Criteria andProfileIn(List<String> values) {
+            addCriterion("profile in", values, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andDaysNotBetween(Integer value1, Integer value2) {
-            addCriterion("days not between", value1, value2, "days");
+        public Criteria andProfileNotIn(List<String> values) {
+            addCriterion("profile not in", values, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andRedIsNull() {
-            addCriterion("red is null");
+        public Criteria andProfileBetween(String value1, String value2) {
+            addCriterion("profile between", value1, value2, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andRedIsNotNull() {
-            addCriterion("red is not null");
+        public Criteria andProfileNotBetween(String value1, String value2) {
+            addCriterion("profile not between", value1, value2, "profile");
             return (Criteria) this;
         }
 
-        public Criteria andRedEqualTo(Integer value) {
-            addCriterion("red =", value, "red");
+        public Criteria andCollectiveIncomeIsNull() {
+            addCriterion("collective_income is null");
             return (Criteria) this;
         }
 
-        public Criteria andRedNotEqualTo(Integer value) {
-            addCriterion("red <>", value, "red");
+        public Criteria andCollectiveIncomeIsNotNull() {
+            addCriterion("collective_income is not null");
             return (Criteria) this;
         }
 
-        public Criteria andRedGreaterThan(Integer value) {
-            addCriterion("red >", value, "red");
+        public Criteria andCollectiveIncomeEqualTo(Long value) {
+            addCriterion("collective_income =", value, "collectiveIncome");
             return (Criteria) this;
         }
 
-        public Criteria andRedGreaterThanOrEqualTo(Integer value) {
-            addCriterion("red >=", value, "red");
+        public Criteria andCollectiveIncomeNotEqualTo(Long value) {
+            addCriterion("collective_income <>", value, "collectiveIncome");
             return (Criteria) this;
         }
 
-        public Criteria andRedLessThan(Integer value) {
-            addCriterion("red <", value, "red");
+        public Criteria andCollectiveIncomeGreaterThan(Long value) {
+            addCriterion("collective_income >", value, "collectiveIncome");
             return (Criteria) this;
         }
 
-        public Criteria andRedLessThanOrEqualTo(Integer value) {
-            addCriterion("red <=", value, "red");
+        public Criteria andCollectiveIncomeGreaterThanOrEqualTo(Long value) {
+            addCriterion("collective_income >=", value, "collectiveIncome");
             return (Criteria) this;
         }
 
-        public Criteria andRedIn(List<Integer> values) {
-            addCriterion("red in", values, "red");
+        public Criteria andCollectiveIncomeLessThan(Long value) {
+            addCriterion("collective_income <", value, "collectiveIncome");
             return (Criteria) this;
         }
 
-        public Criteria andRedNotIn(List<Integer> values) {
-            addCriterion("red not in", values, "red");
+        public Criteria andCollectiveIncomeLessThanOrEqualTo(Long value) {
+            addCriterion("collective_income <=", value, "collectiveIncome");
             return (Criteria) this;
         }
 
-        public Criteria andRedBetween(Integer value1, Integer value2) {
-            addCriterion("red between", value1, value2, "red");
+        public Criteria andCollectiveIncomeIn(List<Long> values) {
+            addCriterion("collective_income in", values, "collectiveIncome");
             return (Criteria) this;
         }
 
-        public Criteria andRedNotBetween(Integer value1, Integer value2) {
-            addCriterion("red not between", value1, value2, "red");
+        public Criteria andCollectiveIncomeNotIn(List<Long> values) {
+            addCriterion("collective_income not in", values, "collectiveIncome");
             return (Criteria) this;
         }
 
-        public Criteria andBlackIsNull() {
-            addCriterion("black is null");
+        public Criteria andCollectiveIncomeBetween(Long value1, Long value2) {
+            addCriterion("collective_income between", value1, value2, "collectiveIncome");
             return (Criteria) this;
         }
 
-        public Criteria andBlackIsNotNull() {
-            addCriterion("black is not null");
+        public Criteria andCollectiveIncomeNotBetween(Long value1, Long value2) {
+            addCriterion("collective_income not between", value1, value2, "collectiveIncome");
             return (Criteria) this;
         }
 
-        public Criteria andBlackEqualTo(Integer value) {
-            addCriterion("black =", value, "black");
+        public Criteria andAverageIncomeIsNull() {
+            addCriterion("average_income is null");
             return (Criteria) this;
         }
 
-        public Criteria andBlackNotEqualTo(Integer value) {
-            addCriterion("black <>", value, "black");
+        public Criteria andAverageIncomeIsNotNull() {
+            addCriterion("average_income is not null");
             return (Criteria) this;
         }
 
-        public Criteria andBlackGreaterThan(Integer value) {
-            addCriterion("black >", value, "black");
+        public Criteria andAverageIncomeEqualTo(Long value) {
+            addCriterion("average_income =", value, "averageIncome");
             return (Criteria) this;
         }
 
-        public Criteria andBlackGreaterThanOrEqualTo(Integer value) {
-            addCriterion("black >=", value, "black");
+        public Criteria andAverageIncomeNotEqualTo(Long value) {
+            addCriterion("average_income <>", value, "averageIncome");
             return (Criteria) this;
         }
 
-        public Criteria andBlackLessThan(Integer value) {
-            addCriterion("black <", value, "black");
+        public Criteria andAverageIncomeGreaterThan(Long value) {
+            addCriterion("average_income >", value, "averageIncome");
             return (Criteria) this;
         }
 
-        public Criteria andBlackLessThanOrEqualTo(Integer value) {
-            addCriterion("black <=", value, "black");
+        public Criteria andAverageIncomeGreaterThanOrEqualTo(Long value) {
+            addCriterion("average_income >=", value, "averageIncome");
             return (Criteria) this;
         }
 
-        public Criteria andBlackIn(List<Integer> values) {
-            addCriterion("black in", values, "black");
+        public Criteria andAverageIncomeLessThan(Long value) {
+            addCriterion("average_income <", value, "averageIncome");
             return (Criteria) this;
         }
 
-        public Criteria andBlackNotIn(List<Integer> values) {
-            addCriterion("black not in", values, "black");
+        public Criteria andAverageIncomeLessThanOrEqualTo(Long value) {
+            addCriterion("average_income <=", value, "averageIncome");
             return (Criteria) this;
         }
 
-        public Criteria andBlackBetween(Integer value1, Integer value2) {
-            addCriterion("black between", value1, value2, "black");
+        public Criteria andAverageIncomeIn(List<Long> values) {
+            addCriterion("average_income in", values, "averageIncome");
             return (Criteria) this;
         }
 
-        public Criteria andBlackNotBetween(Integer value1, Integer value2) {
-            addCriterion("black not between", value1, value2, "black");
+        public Criteria andAverageIncomeNotIn(List<Long> values) {
+            addCriterion("average_income not in", values, "averageIncome");
             return (Criteria) this;
         }
 
-        public Criteria andVillageIdIsNull() {
-            addCriterion("village_id is null");
+        public Criteria andAverageIncomeBetween(Long value1, Long value2) {
+            addCriterion("average_income between", value1, value2, "averageIncome");
             return (Criteria) this;
         }
 
-        public Criteria andVillageIdIsNotNull() {
-            addCriterion("village_id is not null");
+        public Criteria andAverageIncomeNotBetween(Long value1, Long value2) {
+            addCriterion("average_income not between", value1, value2, "averageIncome");
             return (Criteria) this;
         }
 
-        public Criteria andVillageIdEqualTo(Integer value) {
-            addCriterion("village_id =", value, "villageId");
+        public Criteria andAverageIncomeRateIsNull() {
+            addCriterion("average_income_rate is null");
             return (Criteria) this;
         }
 
-        public Criteria andVillageIdNotEqualTo(Integer value) {
-            addCriterion("village_id <>", value, "villageId");
+        public Criteria andAverageIncomeRateIsNotNull() {
+            addCriterion("average_income_rate is not null");
             return (Criteria) this;
         }
 
-        public Criteria andVillageIdGreaterThan(Integer value) {
-            addCriterion("village_id >", value, "villageId");
+        public Criteria andAverageIncomeRateEqualTo(Long value) {
+            addCriterion("average_income_rate =", value, "averageIncomeRate");
             return (Criteria) this;
         }
 
-        public Criteria andVillageIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("village_id >=", value, "villageId");
+        public Criteria andAverageIncomeRateNotEqualTo(Long value) {
+            addCriterion("average_income_rate <>", value, "averageIncomeRate");
             return (Criteria) this;
         }
 
-        public Criteria andVillageIdLessThan(Integer value) {
-            addCriterion("village_id <", value, "villageId");
+        public Criteria andAverageIncomeRateGreaterThan(Long value) {
+            addCriterion("average_income_rate >", value, "averageIncomeRate");
             return (Criteria) this;
         }
 
-        public Criteria andVillageIdLessThanOrEqualTo(Integer value) {
-            addCriterion("village_id <=", value, "villageId");
+        public Criteria andAverageIncomeRateGreaterThanOrEqualTo(Long value) {
+            addCriterion("average_income_rate >=", value, "averageIncomeRate");
             return (Criteria) this;
         }
 
-        public Criteria andVillageIdIn(List<Integer> values) {
-            addCriterion("village_id in", values, "villageId");
+        public Criteria andAverageIncomeRateLessThan(Long value) {
+            addCriterion("average_income_rate <", value, "averageIncomeRate");
             return (Criteria) this;
         }
 
-        public Criteria andVillageIdNotIn(List<Integer> values) {
-            addCriterion("village_id not in", values, "villageId");
+        public Criteria andAverageIncomeRateLessThanOrEqualTo(Long value) {
+            addCriterion("average_income_rate <=", value, "averageIncomeRate");
             return (Criteria) this;
         }
 
-        public Criteria andVillageIdBetween(Integer value1, Integer value2) {
-            addCriterion("village_id between", value1, value2, "villageId");
+        public Criteria andAverageIncomeRateIn(List<Long> values) {
+            addCriterion("average_income_rate in", values, "averageIncomeRate");
             return (Criteria) this;
         }
 
-        public Criteria andVillageIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("village_id not between", value1, value2, "villageId");
+        public Criteria andAverageIncomeRateNotIn(List<Long> values) {
+            addCriterion("average_income_rate not in", values, "averageIncomeRate");
+            return (Criteria) this;
+        }
+
+        public Criteria andAverageIncomeRateBetween(Long value1, Long value2) {
+            addCriterion("average_income_rate between", value1, value2, "averageIncomeRate");
+            return (Criteria) this;
+        }
+
+        public Criteria andAverageIncomeRateNotBetween(Long value1, Long value2) {
+            addCriterion("average_income_rate not between", value1, value2, "averageIncomeRate");
             return (Criteria) this;
         }
     }

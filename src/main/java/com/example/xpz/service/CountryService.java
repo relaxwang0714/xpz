@@ -12,8 +12,8 @@ import com.example.xpz.utils.ReturnMsg;
 
 @Service
 public class CountryService {
-    @Autowired
-    CountryMapper countryMapper;
+//    @Autowired
+//    CountryMapper countryMapper;
     @Autowired
     PeopleStructureMapper peopleStructureMapper;
     @Autowired
@@ -41,11 +41,16 @@ public class CountryService {
     @Autowired
     DangyuanMapper dangyuanMapper;
 
-    public String selectByPrimaryKey(int id){
-        Country country= countryMapper.selectByPrimaryKey(id);
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("profile",country.getProfile());
-        return jsonObject.toString();
+    @Autowired
+    VillageMapper villageMapper;
+    public String selectVillage(Long id){
+        VillageExample example = new VillageExample();
+        VillageExample.Criteria critera = example.createCriteria();
+        critera.andIdEqualTo(id);
+        List<Village> list = villageMapper.selectByExample(example);
+        returnmsg.setData(list);
+        returnmsg.setCode("0");
+        return returnmsg.toString();
     }
 
     public String selectPeopleStructure(){

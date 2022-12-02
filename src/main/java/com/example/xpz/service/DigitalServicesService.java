@@ -115,7 +115,7 @@ public class DigitalServicesService {
     public String selectKuaidi(){
         KuaidiExample kuaidiExample = new KuaidiExample();
         KuaidiExample.Criteria criteria = kuaidiExample.createCriteria();
-        List<Kuaidi> kuaidiList = kuaidiMapper.selectByExample(kuaidiExample);
+        List<Kuaidi> kuaidiList = kuaidiMapper.selectByExampleWithBLOBs(kuaidiExample);
         returnMsg.setData(kuaidiList);
         returnMsg.setCode("0");
         returnMsg.setMsg("成功");
@@ -155,7 +155,7 @@ public class DigitalServicesService {
     public String selectPark(){
         ParkExample parkExample = new ParkExample();
         ParkExample.Criteria criteria = parkExample.createCriteria();
-        List<Park> parkList = parkMapper.selectByExample(parkExample);
+        List<Park> parkList = parkMapper.selectByExampleWithBLOBs(parkExample);
         returnMsg.setData(parkList);
         returnMsg.setCode("0");
         returnMsg.setMsg("成功");
